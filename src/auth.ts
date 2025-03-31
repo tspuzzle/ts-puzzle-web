@@ -8,7 +8,9 @@ import NextAuth from 'next-auth'
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PayloadAuthAdapter(),
   providers: [
-    Credentials({}),
+    Credentials({
+      authorize: async (credentials, req) => {},
+    }),
     Github({
       clientId: process.env.GITHUB_CLIENT_ID!,
       clientSecret: process.env.GITHUB_CLIENT_SECRET!,
