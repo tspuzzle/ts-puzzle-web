@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth'
 import { NextResponse } from 'next/server'
+import routes from '@/(shared)/config/routes'
 
 const { auth } = NextAuth({ providers: [], session: { strategy: 'jwt' } })
 
@@ -11,6 +12,12 @@ export default auth((req) => {
   }
 
   const isLoggedIn = !!req.auth
+
+  if (isLoggedIn) {
+    if ([routes.login, routes.register].includes(url.pathname)) {
+      return NextResponse.redirect(new URL('/', req.url))
+    }
+  }
   console.log('ROUTE:', req.nextUrl.pathname)
   console.log('IS LOGGED IN', isLoggedIn)
 })

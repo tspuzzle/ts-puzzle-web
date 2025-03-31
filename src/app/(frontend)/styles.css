@@ -13,7 +13,9 @@ main {
   --color-primary: #3c40bf;
   --color-primary-foreground: #ffffff;
 
+  --color-secondary-*: initial;
   --color-secondary: #09bc8a;
+  --color-secondary-foreground: #ffffff;
 
   --color-error: #fe5f55;
   --color-destructive: #fe5f55;
