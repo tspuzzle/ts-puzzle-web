@@ -7,6 +7,8 @@ import { Input } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import SocialsButtons from './socials-buttons'
+import { useTransition } from 'react'
+import { register } from '@/actions/register'
 
 const FormRegister = () => {
   const form = useForm<RegisterSchemaType>({
@@ -17,22 +19,12 @@ const FormRegister = () => {
     },
   })
 
+  const [isPending, startTransition] = useTransition()
+
   const onSubmit = (values: RegisterSchemaType) => {
-    console.log(values)
-    /*
-    setError(null)
-    setSuccess(null)
     startTransition(() => {
-      register(values).then((data) => {
-        if (data.error) {
-          setError(data.error)
-        }
-        if (data.success) {
-          setSuccess(data.success)
-        }
-      })
+      register(values)
     })
-      */
   }
 
   return (
