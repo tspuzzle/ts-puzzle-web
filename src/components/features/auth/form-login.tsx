@@ -1,15 +1,17 @@
 'use client'
-import { LoginSchema, LoginSchemaType, RegisterSchemaType } from '@/(shared)/schemas/auth'
+import { LoginSchema, LoginSchemaType } from '@/(shared)/schemas/auth'
 import { Button } from '@/components/ui/button'
-import { FaGithub } from 'react-icons/fa'
 
+import { login } from '@/actions/login'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import SocialsButtons from './socials-buttons'
 
 const FormLogin = () => {
+  const [isPending, startTransition] = useTransition()
   const form = useForm<LoginSchemaType>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -18,22 +20,11 @@ const FormLogin = () => {
     },
   })
 
-  const onSubmit = (values: RegisterSchemaType) => {
-    console.log(values)
-    /*
-    setError(null)
-    setSuccess(null)
-    startTransition(() => {
-      register(values).then((data) => {
-        if (data.error) {
-          setError(data.error)
-        }
-        if (data.success) {
-          setSuccess(data.success)
-        }
-      })
+  const onSubmit = (values: LoginSchemaType) => {
+    startTransition(async () => {
+      await login(values)
     })
-      */
+    console.log(values)
   }
 
   return (
