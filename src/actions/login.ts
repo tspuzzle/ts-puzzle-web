@@ -15,8 +15,11 @@ export const login = async (values: any) => {
 
   try {
     await signIn('credentials', { ...validatedFields.data, redirectTo: '/' })
-  } catch (_) {
-    return { error: 'Something went wrong' }
+  } catch (error) {
+    if (error instanceof AuthError) {
+      return { error: 'Something went wrong' }
+    }
+    throw error
   }
   return { success: 'Email sent' }
 }
