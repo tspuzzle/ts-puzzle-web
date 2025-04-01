@@ -7,9 +7,11 @@ import { buildConfig, getPayload as getPayloadBase } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
-import { Accounts } from './collections/Account'
+import { Users } from './(admin)/collections/Users'
+import { Media } from './(admin)/collections/Media'
+import { Accounts } from './(admin)/collections/Account'
+import { Challenges } from './(admin)/collections/Challenges'
+import { ChallengeLabels } from './(admin)/collections/ChallengeLabels'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -29,7 +31,7 @@ const payloadConfig = buildConfig({
       },
     },
   },
-  collections: [Users, Accounts, Media],
+  collections: [Users, Accounts, Challenges, ChallengeLabels, Media],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
