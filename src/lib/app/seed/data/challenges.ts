@@ -1,0 +1,76 @@
+import { addDescription } from '../helpers/addDescription'
+
+export const challenges = [
+  {
+    slug: 'generic-type',
+    title: 'Generic type',
+    labels: ['generic'],
+    difficulty: 'beginner',
+    description: addDescription(),
+  },
+  {
+    title: 'Generic Type with Constraints 1',
+    slug: 'generic-type-with-constraints-1',
+    labels: ['generic constraints'],
+    difficulty: 'beginner',
+    description: addDescription(),
+  },
+  {
+    title: 'Generic Type with Constraints 2',
+    slug: 'generic-type-with-constraints-2',
+    labels: ['generic constraints'],
+    difficulty: 'beginner',
+    description: addDescription(),
+  },
+  {
+    title: 'Is String',
+    slug: 'is-string',
+    labels: ['conditional types'],
+    difficulty: 'beginner',
+    description: addDescription(),
+  },
+  {
+    title: 'If',
+    slug: 'if',
+    labels: ['conditional types'],
+    difficulty: 'beginner',
+    description: addDescription(),
+  },
+  {
+    title: 'Is Function?',
+    slug: 'is-function',
+    labels: ['conditional types'],
+    difficulty: 'beginner',
+    description: addDescription(),
+  },
+  {
+    title: 'Tuple to Union',
+    slug: 'tuple-to-union',
+    labels: ['indexed types'],
+    difficulty: 'beginner',
+    description: addDescription(),
+  },
+  {
+    title: 'Type LookUp',
+    slug: 'type-lookup',
+    labels: ['conditional types', 'distributive conditional types'],
+    difficulty: 'beginner',
+    description: addDescription(),
+  },
+  {
+    title: 'Merge',
+    slug: 'merge',
+    labels: ['conditional types', 'union types', 'mapped types', 'keyof'],
+    difficulty: 'medium',
+    description: addDescription(),
+    order: 11,
+  },
+  {
+    title: 'Difference',
+    slug: 'difference',
+    labels: ['conditional types', 'union types', 'intersection types', 'mapped types', 'keyof'],
+    difficulty: 'medium',
+    description: addDescription(),
+    order: 12,
+  },
+]
