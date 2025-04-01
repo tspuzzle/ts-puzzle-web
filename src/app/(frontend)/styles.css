@@ -13,12 +13,22 @@ main {
 .light {
   --color-white-main: #ffffff;
   --color-black-main: #000000;
-  --color-primary-main: #3c40bf;
+
+  --color-primary-text-main: #00104c;
+  --color-secondary-text-main: #6c6e74;
+  --color-disabled-text-main: #a7a9b0;
+
+  --color-primary-main: #00104c;
 }
 
 .dark {
   --color-white-main: #000000;
   --color-black-main: #ffffff;
+
+  --color-primary-text-main: #f8f9f9;
+  --color-secondary-text-main: #e9e9ea;
+  --color-disabled-text-main: #a7a9b0;
+
   --color-primary-main: #999bd8;
 }
 
@@ -27,10 +37,15 @@ main {
   --color-black: var(--color-black-main);
 
   --color-primary-*: initial;
+  --color-secondary-*: initial;
+
+  --color-primary-text: var(--color-primary-text-main);
+  --color-secondary-text: var(--color-secondary-text-main);
+  --color-disabled-text: var(--color-disabled-text-main);
+
   --color-primary: var(--color-primary-main);
   --color-primary-foreground: #ffffff;
 
-  --color-secondary-*: initial;
   --color-secondary: #09bc8a;
   --color-secondary-foreground: #ffffff;
 
