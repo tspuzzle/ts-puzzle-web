@@ -1,6 +1,7 @@
 import { Payload } from 'payload'
 import { challenges } from './data/challenges'
 import { ChallengeLabel } from '@/payload-types'
+import { addDescription } from './helpers/addDescription'
 
 export const seed = async ({ payload }: { payload: Payload }) => {
   payload.logger.info('Seeding database...')
@@ -36,9 +37,10 @@ export const seed = async ({ payload }: { payload: Payload }) => {
         data: {
           title: challenge.title,
           slug: challenge.slug,
-          description: challenge.description,
+          description: addDescription(),
           difficulty: challenge.difficulty,
           label: challengeLabelIds,
+          order: challenge.order,
         },
       })
     }),
