@@ -1,1 +1,1 @@
-export { ChallengePage } from './ChallengePage'
+export { ChallengePage } from './ui/ChallengePage'

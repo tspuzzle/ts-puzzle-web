@@ -163,7 +163,7 @@ export interface Account {
  */
 export interface Challenge {
   id: number;
-  slug?: string | null;
+  slug: string;
   slugLock?: boolean | null;
   title: string;
   difficulty: 'beginner' | 'easy' | 'medium' | 'hard' | 'extreme';
