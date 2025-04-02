@@ -14,27 +14,80 @@ main {
   --color-white-main: #ffffff;
   --color-black-main: #000000;
 
+  --color-background: #ffffff;
+  --color-background-paper: #ffffff;
+  --color-background-toxic: #dffe5c;
+
   --color-primary-text-main: #00104c;
   --color-secondary-text-main: #6c6e74;
   --color-disabled-text-main: #a7a9b0;
 
   --color-primary-main: #00104c;
+
+  --color-error-main: #fe5f55;
+  --color-error-light: #ffe7e5;
+  --color-error-dark: #ce423a;
+  --color-error-contrast: #ffffff;
+
+  --color-warning-main: #faae44;
+  --color-warning-light: #fff4e5;
+  --color-warning-dark: #f18d03;
+  --color-warning-contrast: #ffffff;
+
+  --color-info-main: #24abff;
+  --color-info-light: #d6efff;
+  --color-info-dark: #0b88d6;
+  --color-info-contrast: #ffffff;
+
+  --color-success-main: #14c75b;
+  --color-success-light: #e9fbf0;
+  --color-success-dark: #059940;
+  --color-success-contrast: #ffffff;
 }
 
 .dark {
   --color-white-main: #000000;
   --color-black-main: #ffffff;
 
+  --color-background: #1a1a1a;
+  --color-background-paper: #1a1a1a;
+  --color-background-toxic: #dffe5c;
+
   --color-primary-text-main: #f8f9f9;
   --color-secondary-text-main: #e9e9ea;
   --color-disabled-text-main: #a7a9b0;
 
   --color-primary-main: #999bd8;
+
+  --color-error-main: #f5645b;
+  --color-error-light: #ffd9d7;
+  --color-error-dark: #ce423a;
+  --color-error-contrast: #ffffff;
+
+  --color-warning-main: #f99810;
+  --color-warning-light: #ffeed6;
+  --color-warning-dark: #f18d03;
+  --color-warning-contrast: #ffffff;
+
+  --color-info-main: #68baee;
+  --color-info-light: #d6efff;
+  --color-info-dark: #0c99f0;
+  --color-info-contrast: #ffffff;
+
+  --color-success-main: #409c65;
+  --color-success-light: #ddf9e8;
+  --color-success-dark: #07ca55;
+  --color-success-contrast: #ffffff;
 }
 
 @theme inline {
+  /* COLORS */
   --color-white: var(--color-white-main);
   --color-black: var(--color-black-main);
+
+  --color-background: var(--color-background);
+  --color-background-paper: var(--color-background-paper);
+  --color-background-toxic: var(--color-background-toxic);
 
   --color-primary-*: initial;
   --color-secondary-*: initial;
@@ -49,8 +102,27 @@ main {
   --color-secondary: #09bc8a;
   --color-secondary-foreground: #ffffff;
 
-  --color-error: #fe5f55;
-  --color-destructive: #fe5f55;
+  --color-destructive: var(--color-error-main);
+
+  --color-error: var(--color-error-main);
+  --color-error-light: var(--color-error-light);
+  --color-error-dark: var(--color-error-dark);
+  --color-error-contrast: var(--color-error-contrast);
+
+  --color-warning: var(--color-warning-main);
+  --color-warning-light: var(--color-warning-light);
+  --color-warning-dark: var(--color-warning-dark);
+  --color-warning-contrast: var(--color-warning-contrast);
+
+  --color-info: var(--color-info-main);
+  --color-info-light: var(--color-info-light);
+  --color-info-dark: var(--color-info-dark);
+  --color-info-contrast: var(--color-info-contrast);
+
+  --color-success: var(--color-success-main);
+  --color-success-light: var(--color-success-light);
+  --color-success-dark: var(--color-success-dark);
+  --color-success-contrast: var(--color-success-contrast);
 
   --color-ring: #ebedf7;
   --color-input: #ebedf7;
@@ -66,6 +138,7 @@ main {
   --color-grey-800: #767a8b;
   --color-grey-900: #60636f;
 
+  /* TEXT */
   --text-base: 1rem;
 
   --text-h1: 3.75rem;
@@ -76,23 +149,30 @@ main {
   --text-h2--font-weight: 600;
 
   --text-h3: 2rem;
+  --text-h3--line-height: 2.4rem;
   --text-h3--font-weight: 600;
 
   --text-h4: 1.5rem;
+  --text-h4--line-height: 1.8rem;
   --text-h4--font-weight: 600;
 
   --text-h5: 1rem;
+  --text-h5--line-height: 1.2rem;
   --text-h5--font-weight: 600;
 
   --text-h6: 0.75rem;
+  --text-h6--line-height: 0.9rem;
   --text-h6--font-weight: 600;
 
-  --text-subtitle: 0.75rem;
+  --text-subtitle: 1.25rem;
+  --text-subtitle--line-height: 1.5rem;
 
   --text-body1: 1rem;
+  --text-body1--line-height: 1.4rem;
   --text-body1--font-weight: 400;
 
   --text-body2: 0.75rem;
+  --text-body2--line-height: 1.05rem;
   --text-body2--font-weight: 400;
 
   --text-button: 1rem;

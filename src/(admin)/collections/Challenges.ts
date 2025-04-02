@@ -16,7 +16,7 @@ export const Challenges: CollectionConfig = {
     useAsTitle: 'title',
   },
   fields: [
-    ...slugField(),
+    ...slugField('title', { slugOverrides: { required: true } }),
     {
       name: 'title',
       type: 'text',
