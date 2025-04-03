@@ -1,5 +1,4 @@
-import { cn } from '@/lib/utils'
-import { clsx, type ClassValue } from 'clsx'
+import { clsx } from 'clsx'
 
 const CONFIG: { [key: string]: { text: string; color: string; background: string } } = {
   beginner: {
@@ -29,7 +28,7 @@ const CONFIG: { [key: string]: { text: string; color: string; background: string
   },
 }
 
-export const DifficultyLabel = ({ type }: { type: string }) => {
+export const DifficultyChip = ({ type }: { type: string }) => {
   const { text, ...restStyles } = CONFIG[type] || CONFIG.beginner
   return (
     <div

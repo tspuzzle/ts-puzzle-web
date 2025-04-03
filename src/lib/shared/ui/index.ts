@@ -1,5 +1,6 @@
 export { Header } from './header/Header'
 
-export { ChallengeCard } from './card/ChallengeCard'
+export { ChallengeCard } from './cards/ChallengeCard'
 
-export { DifficultyLabel } from './label/DifficultyLabel'
+export { DifficultyChip } from './chips/DifficultyChip'
+export { Chip } from './chips/Chip'
