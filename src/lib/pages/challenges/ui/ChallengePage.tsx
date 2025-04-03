@@ -5,7 +5,7 @@ import { ChallengesList } from './ChallengesList'
 export const ChallengePage = () => {
   return (
     <div className="px-4 bg-white">
-      <div className="p-12 rounded-t-3xl bg-primary text-white">
+      <div className="p-12 rounded-t-3xl bg-primary-dark text-white">
         <div>
           <h1 className="text-h1 max-w-[1000px]">
             Learn and imporove
@@ -27,7 +27,9 @@ export const ChallengePage = () => {
           </h1>
           <Button variant="secondary">Support Us</Button>
         </div>
-        <ChallengesList />
+        <div className="mt-40">
+          <ChallengesList />
+        </div>
       </div>
     </div>
   )
