@@ -35,7 +35,7 @@ export const Challenges: CollectionConfig = {
       required: true,
     },
     {
-      name: 'label',
+      name: 'labels',
       type: 'relationship',
       relationTo: 'challengeLabels',
       hasMany: true,

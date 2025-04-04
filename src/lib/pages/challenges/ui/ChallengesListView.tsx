@@ -1,11 +1,11 @@
 import { ChallengeCard } from '@/lib/shared/ui'
-import { getChallenges } from '../actions/getChallenges'
+import { getChallengesList } from '../actions/getChallengesList'
 import Link from 'next/link'
 import routes from '@/lib/app/routes'
 import { ChallengeLabel } from '@/payload-types'
 
-export const ChallengesList = async () => {
-  const challengesResponse = await getChallenges()
+export const ChallengesListView = async () => {
+  const challengesResponse = await getChallengesList()
 
   const challenges = challengesResponse.docs
 
@@ -15,7 +15,7 @@ export const ChallengesList = async () => {
       <div></div>
       <div className="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {challenges.map((challenge) => {
-          const labels = challenge.label as null | ChallengeLabel[]
+          const labels = challenge.labels as null | ChallengeLabel[]
           return (
             <Link
               href={routes.challenges.bySlug(challenge.slug)}

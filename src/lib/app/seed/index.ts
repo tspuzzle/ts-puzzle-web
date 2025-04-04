@@ -39,7 +39,7 @@ export const seed = async ({ payload }: { payload: Payload }) => {
           slug: challenge.slug,
           description: addDescription(),
           difficulty: challenge.difficulty,
-          label: challengeLabelIds,
+          labels: challengeLabelIds,
           order: challenge.order,
         },
       })
