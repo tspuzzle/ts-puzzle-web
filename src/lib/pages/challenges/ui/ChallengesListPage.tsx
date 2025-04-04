@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
-import { ChallengesList } from './ChallengesList'
+import { ChallengesListView } from './ChallengesListView'
 
-export const ChallengePage = () => {
+export const ChallengesListPage = () => {
   return (
     <div className="px-4 bg-white">
       <div className="p-12 rounded-t-3xl bg-primary-dark text-white">
@@ -28,7 +28,7 @@ export const ChallengePage = () => {
           <Button variant="secondary">Support Us</Button>
         </div>
         <div className="mt-40">
-          <ChallengesList />
+          <ChallengesListView />
         </div>
       </div>
     </div>

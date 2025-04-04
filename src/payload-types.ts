@@ -167,7 +167,7 @@ export interface Challenge {
   slugLock?: boolean | null;
   title: string;
   difficulty: 'beginner' | 'easy' | 'medium' | 'hard' | 'extreme';
-  label?: (number | ChallengeLabel)[] | null;
+  labels?: (number | ChallengeLabel)[] | null;
   description: {
     root: {
       type: string;
@@ -322,7 +322,7 @@ export interface ChallengesSelect<T extends boolean = true> {
   slugLock?: T;
   title?: T;
   difficulty?: T;
-  label?: T;
+  labels?: T;
   description?: T;
   order?: T;
   updatedAt?: T;

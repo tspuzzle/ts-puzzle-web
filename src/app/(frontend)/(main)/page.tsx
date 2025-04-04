@@ -5,7 +5,7 @@ import React from 'react'
 import { fileURLToPath } from 'url'
 
 import config from '@/payload.config'
-import { ChallengePage } from '@/lib/pages/challenges'
+import { ChallengesListPage } from '@/lib/pages/challenges'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -17,7 +17,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <ChallengePage />
+      <ChallengesListPage />
     </>
   )
 }
