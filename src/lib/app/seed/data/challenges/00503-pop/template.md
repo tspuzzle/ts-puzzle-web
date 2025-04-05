@@ -1,0 +1,1 @@
+type Pop<T> = any;

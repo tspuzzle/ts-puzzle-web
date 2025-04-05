@@ -50,7 +50,10 @@ export const Challenges: CollectionConfig = {
             ...rootFeatures,
             FixedToolbarFeature(),
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            BlocksFeature({ blocks: [Code] }),
+            BlocksFeature({
+              blocks: [Code],
+              inlineBlocks: [],
+            }),
             InlineToolbarFeature(),
             HorizontalRuleFeature(),
           ]

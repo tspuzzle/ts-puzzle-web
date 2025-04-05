@@ -1,0 +1,1 @@
+type LengthOfString<S> = any;

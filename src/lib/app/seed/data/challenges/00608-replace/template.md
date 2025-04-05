@@ -1,0 +1,1 @@
+type Replace<S, From, To> = any;

@@ -1,0 +1,12 @@
+@import '../../../../app/(frontend)/styles.css';
+
+.rich-text {
+  @apply text-primary-text;
+  p {
+    @apply mt-2 text-primary-text text-body1;
+  }
+
+  code {
+    @apply py-1 px-2 bg-grey-50 rounded-sm text-secondary-text;
+  }
+}

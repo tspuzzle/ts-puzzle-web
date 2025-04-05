@@ -1,0 +1,1 @@
+type TupleToObject<T> = any;

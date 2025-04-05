@@ -1,0 +1,1 @@
+type MyExclude<T,K> = any;

@@ -1,0 +1,1 @@
+type EndsWith<T, U> = any;
