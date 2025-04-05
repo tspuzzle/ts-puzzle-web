@@ -1,0 +1,1 @@
+type Trunc<T> = any;

@@ -19,8 +19,6 @@ export const seed = async ({ payload }: { payload: Payload }) => {
 
   const savedLabels = _savedLabels as ChallengeLabel[]
 
-  console.log('==>', savedLabels)
-
   await Promise.all(
     challenges.map((challenge) => {
       const challengeLabelIds = challenge.labels.reduce((acc, label) => {

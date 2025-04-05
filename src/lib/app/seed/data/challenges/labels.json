@@ -1,0 +1,17 @@
+[
+    "generics",
+    "generic constraints",
+    "conditional types",
+    "distributive conditional types",
+    "union types", 
+    "mapped types", 
+    "keyof",
+    "intersection types",
+    "infer",
+    "built-in",
+    "recursion",
+    "string",
+    "array",
+    "template literal",
+    "variadic tuple types"
+]

@@ -1,0 +1,27 @@
+- [Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html)
+- [Generic Constraints](https://www.typescriptlang.org/docs/handbook/2/generics.html#generic-constraints)
+- [Conditional Types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html)
+- [Mapped Types](https://www.typescriptlang.org/docs/handbook/2/mapped-types.html)
+- [Indexed Types](https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html)
+- [Key remapping in mapped types](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html#key-remapping-in-mapped-types)
+- [Recursive Conditional Types](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html#recursive-conditional-types)
+- [Type Inference in Conditional Types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html#inferring-within-conditional-types)
+- [Variadic Tuple Types](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-0.html#variadic-tuple-types)
+- [Distributive Conditional Types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html#distributive-conditional-types)
+- [Using type parameters in generic constraints](https://www.typescriptlang.org/docs/handbook/2/generics.html#using-type-parameters-in-generic-constraints)
+- [Intersection types](https://www.typescriptlang.org/docs/handbook/2/objects.html#intersection-types)
+- [keyof and Lookup Types](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#keyof-and-lookup-types)
+- [Template Literal Types](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html#template-literal-types)
+- [Union Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types)
+- [Rest Parameters and Arguments in Function](https://www.typescriptlang.org/docs/handbook/2/functions.html#rest-parameters-and-arguments)
+- [Type inference in conditional types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html#inferring-within-conditional-types)
+- [never type](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#the-never-type)
+
+
+
+- [Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html)
+- [Conditional Types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html)
+- [Variadic Tuple Types](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-0.html#variadic-tuple-types)
+- [Template Literal Types](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html#template-literal-types)
+- [Recursive Conditional Types](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html#recursive-conditional-types)
+

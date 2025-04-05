@@ -1,0 +1,2 @@
+Explanation: https://github.com/ghaiklor/type-challenges-solutions/blob/main/en/easy-tuple-length.md
+Challenge: https://github.com/type-challenges/type-challenges/tree/main/questions/00018-easy-tuple-length

@@ -57,6 +57,15 @@ main {
   --color-grey-700: #818595;
   --color-grey-800: #767a8b;
   --color-grey-900: #60636f;
+
+  --color-code-green: #14c75b;
+  --color-code-grey: #a7a9b0;
+  --color-code-orange: #faae44;
+  --color-code-purple: #cb47ff;
+  --color-code-light-blue: #24abff;
+  --color-code-dark-blue: #3c40bf;
+  --color-code-red: #fe5f55;
+  --color-code-white: #ffffff;
 }
 
 .dark {
@@ -106,6 +115,15 @@ main {
   --color-grey-700: #babcc5;
   --color-grey-800: #c8c9d0;
   --color-grey-900: #e6e7ea;
+
+  --color-code-green: #25e974;
+  --color-code-grey: #a6a8af;
+  --color-code-orange: #fbc374;
+  --color-code-purple: #d97aff;
+  --color-code-light-blue: #57beff;
+  --color-code-dark-blue: #6063cd;
+  --color-code-red: #fe8c85;
+  --color-code-white: #ffffff;
 }
 
 @theme inline {
@@ -168,6 +186,15 @@ main {
   --color-grey-700: var(--color-grey-700);
   --color-grey-800: var(--color-grey-800);
 
+  --color-code-green: var(--color-code-green);
+  --color-code-grey: var(--color-code-grey);
+  --color-code-orange: var(--color-code-orange);
+  --color-code-purple: var(--color-code-purple);
+  --color-code-light-blue: var(--color-code-light-blue);
+  --color-code-dark-blue: var(--color-code-dark-blue);
+  --color-code-red: var(--color-code-red);
+  --color-code-white: var(--color-code-white);
+
   /* TEXT */
   --text-base: 1rem;
 
@@ -204,6 +231,8 @@ main {
   --text-body2: 0.75rem;
   --text-body2--line-height: 1.05rem;
   --text-body2--font-weight: 400;
+
+  --text-code: 1rem;
 
   --text-button: 1rem;
   --text-button--font-weight: 400;

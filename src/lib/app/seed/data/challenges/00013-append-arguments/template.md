@@ -1,0 +1,1 @@
+type AppendArgument<Fn, ARG> = any;

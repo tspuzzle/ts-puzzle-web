@@ -1,0 +1,1 @@
+type IsFunction<T> = any;

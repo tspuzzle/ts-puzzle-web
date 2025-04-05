@@ -1,0 +1,1 @@
+type TrimRight<T> = any;

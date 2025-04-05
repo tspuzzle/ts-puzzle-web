@@ -1,0 +1,1 @@
+type PercentageParser<P> = any;

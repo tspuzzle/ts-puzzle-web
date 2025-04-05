@@ -1,0 +1,1 @@
+type MyCapitalize<T> = any;

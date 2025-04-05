@@ -1,0 +1,1 @@
+type PublicType<P> = any;

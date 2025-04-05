@@ -1,0 +1,822 @@
+[
+    {
+        "id": "1",
+        "publicId": "generic-type",
+        "title": "Generic Type",
+        "difficulty": "easy",
+        "labels": [
+            "generics"
+        ]
+    },
+    {
+        "id": "2",
+        "publicId": "generic-type-with-constraints-1",
+        "title": "Generic Type with Constraints 1",
+        "difficulty": "easy",
+        "labels": [
+            "generic constraints"
+        ]
+    },
+    {
+        "id": "3",
+        "publicId": "generic-type-with-constraints-2",
+        "title": "Generic Type with Constraints 2",
+        "difficulty": "easy",
+        "labels": [
+            "generic constraints"
+        ]
+    },
+    {
+        "id": "6",
+        "publicId": "is-string",
+        "title": "Is String?",
+        "difficulty": "easy",
+        "labels": [
+            "conditional types"
+        ]
+    },
+    {
+        "id": "7",
+        "publicId": "if",
+        "title": "If",
+        "difficulty": "easy",
+        "labels": [
+            "conditional types"
+        ]
+    },
+    {
+        "id": "8",
+        "publicId": "is-function",
+        "title": "Is Function?",
+        "difficulty": "easy",
+        "labels": [
+            "conditional types"
+        ]
+    },
+    {
+        "id": "9",
+        "publicId": "tuple-to-union",
+        "title": "Tuple To Union",
+        "difficulty": "easy",
+        "labels": [
+            "indexed types"
+        ]
+    },
+    {
+        "id": "10",
+        "publicId": "type-lookup",
+        "title": "Type LookUp",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "distributive conditional types"
+        ]
+    },
+    {
+        "id": "11",
+        "publicId": "merge",
+        "title": "Merge",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "union types",
+            "mapped types",
+            "keyof"
+        ]
+    },
+    {
+        "id": "12",
+        "publicId": "object-difference",
+        "title": "Object Difference",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "union types",
+            "intersection types",
+            "keyof",
+            "mapped types"
+        ]
+    },
+    {
+        "id": "13",
+        "publicId": "append-arguments-to-function-declaration",
+        "title": "Append Arguments to Function Declaration",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "infer"
+        ]
+    },
+    {
+        "id": "14",
+        "publicId": "append-argument-to-object",
+        "title": "Append Argument to Object",
+        "difficulty": "medium",
+        "labels": [
+            "union types",
+            "conditional types",
+            "keyof",
+            "mapped types"
+        ]
+    },
+    {
+        "id": "15",
+        "publicId": "flip-key-and-value-in-object",
+        "title": "Flip key and value in object",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "mapped types",
+            "key remapping"
+        ]
+    },
+    {
+        "id": "16",
+        "publicId": "object-pick-by-type",
+        "title": "Object: Pick by type",
+        "difficulty": "medium",
+        "labels": [
+            "object",
+            "conditional types",
+            "mapped types",
+            "keyof",
+            "key remapping"
+        ]
+    },
+    {
+        "id": "17",
+        "publicId": "flip-function-arguments",
+        "title": "Flip Function Arguments",
+        "difficulty": "medium",
+        "labels": [
+            "generics",
+            "generic constraints",
+            "conditional types",
+            "infer",
+            "recursion"
+        ]
+    },
+    {
+        "id": "18",
+        "publicId": "object-filter",
+        "title": "Is Never",
+        "difficulty": "medium",
+        "labels": [
+            "never",
+            "distributive conditional types"
+        ]
+    },
+    {
+        "id": "301",
+        "publicId": "get-return-type",
+        "title": "Get Return Type",
+        "difficulty": "medium",
+        "labels": [
+            "built-in",
+            "infer",
+            "generic constraints",
+            "conditional types"
+        ]
+    },
+    {
+        "id": "302",
+        "publicId": "omit",
+        "title": "Omit",
+        "difficulty": "medium",
+        "labels": [
+            "built-in",
+            "infer",
+            "generic constraints",
+            "conditional types"
+        ]
+    },
+    {
+        "id": "303",
+        "publicId": "pick",
+        "title": "Pick",
+        "difficulty": "easy",
+        "labels": [
+            "built-in",
+            "infer",
+            "generic constraints",
+            "conditional types"
+        ]
+    },
+    {
+        "id": "304",
+        "publicId": "awaited",
+        "title": "Awaited",
+        "difficulty": "medium",
+        "labels": [
+            "built-in",
+            "recursion",
+            "infer",
+            "conditional types"
+        ]
+    },
+    {
+        "id": "305",
+        "publicId": "awaited-2",
+        "title": "Awaited 2",
+        "difficulty": "medium",
+        "labels": [
+            "built-in",
+            "recursion",
+            "infer",
+            "conditional types"
+        ]
+    },
+    {
+        "id": "306",
+        "publicId": "parameters",
+        "title": "Parameters",
+        "difficulty": "easy",
+        "labels": [
+            "built-in",
+            "infer",
+            "conditional types"
+        ]
+    },
+    {
+        "id": "307",
+        "publicId": "readonly",
+        "title": "Readonly",
+        "difficulty": "easy",
+        "labels": [
+            "built-in",
+            "mapped types"
+        ]
+    },
+    {
+        "id": "308",
+        "publicId": "readonly-2",
+        "title": "Readonly 2",
+        "difficulty": "medium",
+        "labels": [
+            "intersection types",
+            "mapped types"
+        ]
+    },
+    {
+        "id": "309",
+        "publicId": "deep-readonly",
+        "title": "Deep Readonly",
+        "difficulty": "medium",
+        "labels": [
+            "infer",
+            "conditional types",
+            "recursion"
+        ]
+    },
+    {
+        "id": "310",
+        "publicId": "exclude",
+        "title": "Exclude",
+        "difficulty": "easy",
+        "labels": [
+            "built-in",
+            "infer",
+            "conditional types",
+            "distributive conditional types"
+        ]
+    },
+    {
+        "id": "311",
+        "publicId": "extract",
+        "title": "Tuple To Object",
+        "difficulty": "easy",
+        "labels": [
+            "mapped types",
+            "indexed types"
+        ]
+    },
+    {
+        "id": "314",
+        "title": "Deep Lookup Object Property Type",
+        "publicId": "deep-lookup-object-property-type",
+        "difficulty": "medium",
+        "labels": [
+            "mapped types",
+            "conditional types",
+            "infer",
+            "template literal",
+            "recursion"
+        ],
+        "own": true
+    },
+    {
+        "id": "315",
+        "title": "Deep Lookup Object Property Type By Array-Like Path",
+        "publicId": "deep-lookup-object-property-type-by-array-like-path",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "infer",
+            "variadic tuple types",
+            "recursion"
+        ],
+        "own": true
+    },
+    {
+        "id": "316",
+        "title": "Deep Lookup Object Property Type 2",
+        "publicId": "deep-lookup-object-property-type-2",
+        "difficulty": "hard",
+        "labels": [
+            "mapped types",
+            "conditional types",
+            "infer",
+            "template literal",
+            "variadic tuple types",
+            "recursion"
+        ],
+        "own": true
+    },
+    {
+        "id": "500",
+        "publicId": "first-of-array",
+        "title": "First of Array",
+        "difficulty": "easy",
+        "labels": [
+            "infer",
+            "conditional types",
+            "array"
+        ]
+    },
+    {
+        "id": "501",
+        "publicId": "last-of-array",
+        "title": "Last of Array",
+        "difficulty": "easy",
+        "labels": [
+            "infer",
+            "array"
+        ]
+    },
+    {
+        "id": "502",
+        "publicId": "includes",
+        "title": "Includes",
+        "difficulty": "medium",
+        "labels": [
+            "infer",
+            "array"
+        ]
+    },
+    {
+        "id": "503",
+        "publicId": "pop",
+        "title": "Pop",
+        "difficulty": "easy",
+        "labels": [
+            "infer",
+            "array"
+        ]
+    },
+    {
+        "id": "504",
+        "publicId": "push",
+        "title": "Push",
+        "difficulty": "easy",
+        "labels": [
+            "infer",
+            "array"
+        ]
+    },
+    {
+        "id": "505",
+        "publicId": "shift",
+        "title": "Shift",
+        "difficulty": "medium",
+        "labels": [
+            "infer",
+            "array"
+        ]
+    },
+    {
+        "id": "506",
+        "publicId": "unshift",
+        "title": "Unshift",
+        "difficulty": "easy",
+        "labels": [
+            "infer",
+            "array"
+        ]
+    },
+    {
+        "id": "507",
+        "publicId": "concat",
+        "title": "Concat",
+        "difficulty": "easy",
+        "labels": [
+            "infer",
+            "array"
+        ]
+    },
+    {
+        "id": "508",
+        "publicId": "length-of-array",
+        "title": "Length of Array",
+        "difficulty": "easy",
+        "labels": [
+            "array",
+            "readonly"
+        ]
+    },
+    {
+        "id": "509",
+        "publicId": "array-reverse-items",
+        "title": "Array: Revers Array Items",
+        "difficulty": "medium",
+        "labels": [
+            "array",
+            "infer",
+            "conditional types",
+            "recursion"
+        ]
+    },
+    {
+        "id": "510",
+        "publicId": "array-zip",
+        "title": "Array: Zip",
+        "difficulty": "medium",
+        "labels": [
+            "array",
+            "infer",
+            "conditional types",
+            "recursion"
+        ]
+    },
+    {
+        "id": "511",
+        "publicId": "array-flatten",
+        "title": "Flatten array",
+        "difficulty": "medium",
+        "labels": [
+            "array",
+            "infer",
+            "conditional types",
+            "recursion"
+        ]
+    },
+    {
+        "id": "512",
+        "publicId": "array-filter",
+        "title": "Filter array",
+        "difficulty": "medium",
+        "labels": [
+            "array",
+            "infer",
+            "conditional types",
+            "recursion"
+        ]
+    },
+    {
+        "id": "513",
+        "publicId": "array-replace-first",
+        "title": "Array: Replace First",
+        "difficulty": "medium",
+        "labels": [
+            "array",
+            "infer",
+            "conditional types",
+            "recursion"
+        ]
+    },
+    {
+        "id": "514",
+        "publicId": "array-index-of",
+        "title": "Array: IndexOf",
+        "difficulty": "medium",
+        "labels": [
+            "array",
+            "infer",
+            "conditional types",
+            "recursion"
+        ]
+    },
+    {
+        "id": "515",
+        "publicId": "array-last-index-of",
+        "title": "Array: LastIndexOf",
+        "difficulty": "medium",
+        "labels": [
+            "array",
+            "infer",
+            "conditional types",
+            "recursion"
+        ]
+    },
+    {
+        "id": "516",
+        "publicId": "array-without",
+        "title": "Array: Without",
+        "difficulty": "medium",
+        "labels": [
+            "array",
+            "infer",
+            "conditional types",
+            "recursion"
+        ]
+    },
+    {
+        "id": "517",
+        "publicId": "array-unique-elements",
+        "title": "Array: Unique elements",
+        "difficulty": "medium",
+        "labels": [
+            "generics",
+            "conditional types",
+            "infer",
+            "recursion"
+        ]
+    },
+    {
+        "id": "518",
+        "publicId": "array-unique-elements-2",
+        "title": "Array: Take N Elements",
+        "difficulty": "hard",
+        "labels": [
+            "generics",
+            "conditional types",
+            "infer",
+            "recursion",
+            "variadic tuple types"
+        ]
+    },
+    {
+        "id": "600",
+        "publicId": "string-trim-left",
+        "title": "String: Trim Left",
+        "difficulty": "medium",
+        "labels": [
+            "string",
+            "infer",
+            "template literal",
+            "recursion",
+            "conditional types"
+        ]
+    },
+    {
+        "id": "601",
+        "publicId": "string-trim-right",
+        "title": "String: Trim Right",
+        "difficulty": "medium",
+        "labels": [
+            "string",
+            "infer",
+            "template literal",
+            "recursion",
+            "conditional types"
+        ]
+    },
+    {
+        "id": "602",
+        "publicId": "string-trim",
+        "title": "String: Trim",
+        "difficulty": "medium",
+        "labels": [
+            "string",
+            "infer",
+            "template literal",
+            "recursion",
+            "conditional types"
+        ]
+    },
+    {
+        "id": "603",
+        "publicId": "string-capitalize",
+        "title": "String: Capitalize",
+        "difficulty": "medium",
+        "labels": [
+            "string",
+            "infer",
+            "template literal",
+            "recursion",
+            "conditional types",
+            "lookup"
+        ]
+    },
+    {
+        "id": "604",
+        "publicId": "string-join",
+        "title": "String: Join",
+        "difficulty": "medium",
+        "labels": [
+            "string",
+            "infer",
+            "template literal",
+            "recursion",
+            "conditional types"
+        ]
+    },
+    {
+        "id": "605",
+        "publicId": "string-start-with",
+        "title": "String: Start With",
+        "difficulty": "medium",
+        "labels": [
+            "string",
+            "infer",
+            "template literal",
+            "conditional types"
+        ]
+    },
+    {
+        "id": "606",
+        "publicId": "string-end-with",
+        "title": "String: End With",
+        "difficulty": "medium",
+        "labels": [
+            "string",
+            "infer",
+            "template literal",
+            "conditional types"
+        ]
+    },
+    {
+        "id": "607",
+        "publicId": "string-to-union",
+        "title": "String To Union",
+        "difficulty": "medium",
+        "labels": [
+            "string",
+            "infer",
+            "template literal",
+            "conditional types",
+            "recursion"
+        ]
+    },
+    {
+        "id": "608",
+        "publicId": "string-replace",
+        "title": "String: Replace",
+        "difficulty": "medium",
+        "labels": [
+            "string",
+            "infer",
+            "template literal",
+            "conditional types"
+        ]
+    },
+    {
+        "id": "609",
+        "publicId": "string-replace-all",
+        "title": "String: Replace All",
+        "difficulty": "medium",
+        "labels": [
+            "string",
+            "infer",
+            "template literal",
+            "conditional types",
+            "recursion"
+        ]
+    },
+    {
+        "id": "610",
+        "publicId": "string-drop-char",
+        "title": "String: Drop Char",
+        "difficulty": "medium",
+        "labels": [
+            "string",
+            "infer",
+            "template literal",
+            "conditional types",
+            "recursion"
+        ]
+    },
+    {
+        "id": "611",
+        "publicId": "string-length",
+        "title": "Length of String",
+        "difficulty": "medium",
+        "labels": [
+            "string",
+            "infer",
+            "template literal",
+            "conditional types",
+            "recursion"
+        ]
+    },
+    {
+        "id": "612",
+        "publicId": "string-trunc-number",
+        "title": "String: Trunc number",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "template literal",
+            "infer"
+        ]
+    },
+    {
+        "id": "613",
+        "publicId": "string-absolute-number-as-string",
+        "title": "String: Absolute number as String",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "template literal",
+            "infer"
+        ]
+    },
+    {
+        "id": "614",
+        "publicId": "string-absolute-number-as-number",
+        "title": "String: Absolute number as Number",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "template literal",
+            "infer"
+        ]
+    },
+    {
+        "id": "615",
+        "publicId": "string-kebab-case",
+        "title": "KebabCase",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "template literal",
+            "infer",
+            "recursion"
+        ]
+    },
+    {
+        "id": "616",
+        "publicId": "string-percentage-parser",
+        "title": "Percentage Parser",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "template literal",
+            "infer"
+        ]
+    },
+    {
+        "id": "617",
+        "publicId": "string-public-type",
+        "title": "Public type",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "template literal",
+            "infer",
+            "key remapping",
+            "mapped types"
+        ]
+    },
+    {
+        "id": "618",
+        "publicId": "string-check-repeated-chars",
+        "title": "Check repeated chars",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "template literal",
+            "infer",
+            "union types",
+            "indexed types"
+        ]
+    },
+    {
+        "id": "619",
+        "publicId": "string-first-unique-char-index",
+        "title": "First unique char index",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "template literal",
+            "infer",
+            "union types",
+            "indexed types"
+        ]
+    },
+    {
+        "id": "620",
+        "publicId": "string-is-palindrome",
+        "title": "Is Palindrome",
+        "difficulty": "hard",
+        "labels": [
+            "conditional types",
+            "template literal",
+            "infer",
+            "recursion"
+        ]
+    },
+    {
+        "id": "621",
+        "title": "Parse Object Lookup String",
+        "publicId": "parse-object-lookup-string",
+        "difficulty": "medium",
+        "labels": [
+            "conditional types",
+            "template literal",
+            "infer",
+            "variadic tuple types",
+            "recursion"
+        ],
+        "own": true
+    }
+]

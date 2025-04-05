@@ -5,8 +5,10 @@ import { LuClipboardCheck } from 'react-icons/lu'
 import { IoExtensionPuzzleOutline } from 'react-icons/io5'
 import { FaPeopleGroup } from 'react-icons/fa6'
 import { Chip, DifficultyChip } from '@/lib/shared/ui'
+import RichText from '@/lib/shared/components/RichText'
 
 export const ChallengeView = async ({ challenge }: { challenge: Challenge }) => {
+  console.log('challenge.description', challenge.description)
   const labels = (challenge.labels || []) as ChallengeLabel[]
   return (
     <div className="h-[calc(100vh-80px)] grid grid-cols-2 gap-2 px-4 bg-background-paper">
@@ -40,8 +42,11 @@ export const ChallengeView = async ({ challenge }: { challenge: Challenge }) => 
                 ))}
               </div>
             </div>
-            <div>
-              <TabsContent value="description">Make changes to your account here.</TabsContent>
+            <div className="mt-12 scroll-auto">
+              <TabsContent value="description">
+                <h2 className="text-primary-text text-h4 mb-2">Description:</h2>
+                <RichText data={challenge.description} />
+              </TabsContent>
               <TabsContent value="tests">Change your password here.</TabsContent>
             </div>
           </Tabs>

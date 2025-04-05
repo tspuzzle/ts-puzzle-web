@@ -1,0 +1,1 @@
+type CheckRepeatedChars<T> = any;

@@ -1,0 +1,1 @@
+type Flatten<T> = any;
