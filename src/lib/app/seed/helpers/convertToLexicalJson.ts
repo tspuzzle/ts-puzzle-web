@@ -60,13 +60,19 @@ const parseParagraph = (text: string) => {
   }
 }
 
-export const convertStringToLexicalJSON = (input: string) => {
+export const convertStringToLexicalJSON = (input: string, skipEmptyParagraph = true) => {
   const lines = input.split('\n')
   const children: any[] = []
 
   let currentLine = 0
   while (currentLine < lines.length) {
     const line = lines[currentLine].trim()
+
+    if (line === '') {
+      currentLine++
+      continue
+    }
+
     if (line.startsWith('```')) {
       const codeBlockLines: string[] = []
       currentLine++
