@@ -174,6 +174,7 @@ export const challenges = [
     difficulty: 'medium',
     labels: ['infer', 'conditional types', 'recursion'],
   },
+
   {
     order: 310,
     slug: 'exclude',
@@ -181,6 +182,7 @@ export const challenges = [
     difficulty: 'easy',
     labels: ['built-in', 'infer', 'conditional types', 'distributive conditional types'],
   },
+
   {
     order: 311,
     slug: 'extract',

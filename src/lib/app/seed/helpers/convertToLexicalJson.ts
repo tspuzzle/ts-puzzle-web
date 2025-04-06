@@ -1,113 +1,97 @@
-function convertToLexicalJSON(input: string) {
-  const root: any = {
-    type: 'root',
+const codeBlock = (code: string) => {
+  return {
+    type: 'block',
+    fields: {
+      id: crypto.randomUUID?.() || Math.random().toString(36).slice(2),
+      code,
+      language: 'typescript',
+      blockName: '',
+      blockType: 'code',
+    },
+    format: '',
+    version: 2,
+  }
+}
+
+const textNode = (text: string) => {
+  return {
+    mode: 'normal',
+    text,
+    type: 'text',
+    style: '',
+    detail: 0,
+    format: 0,
+    version: 1,
+  }
+}
+
+const inlineCodeNode = (code: string) => {
+  return {
+    mode: 'normal',
+    text: code,
+    type: 'text',
+    style: '',
+    detail: 0,
+    format: 16,
+    version: 1,
+  }
+}
+
+const parseParagraph = (text: string) => {
+  const segments = text.split(/(`[^`]+`)/g) // capture inline code
+  const children = []
+  for (const seg of segments) {
+    if (seg.startsWith('`') && seg.endsWith('`')) {
+      children.push(inlineCodeNode(seg.slice(1, -1)))
+    } else {
+      children.push(textNode(seg))
+    }
+  }
+
+  return {
+    type: 'paragraph',
     format: '',
     indent: 0,
     version: 1,
-    children: [],
+    children,
     direction: 'ltr',
+    textStyle: '',
+    textFormat: 0,
   }
+}
 
+export const convertStringToLexicalJSON = (input: string) => {
   const lines = input.split('\n')
-  let currentParagraph: any[] = []
-  let inCodeBlock = false
-  let codeBlockLines: string[] = []
-  let codeLanguage = ''
+  const children: any[] = []
 
-  function flushParagraph() {
-    if (currentParagraph.length > 0) {
-      root.children.push({
-        type: 'paragraph',
-        format: '',
-        indent: 0,
-        version: 1,
-        direction: 'ltr',
-        textStyle: '',
-        textFormat: 0,
-        children: currentParagraph,
-      })
-      currentParagraph = []
-    }
-  }
-
-  for (const line of lines) {
+  let currentLine = 0
+  while (currentLine < lines.length) {
+    const line = lines[currentLine].trim()
     if (line.startsWith('```')) {
-      if (!inCodeBlock) {
-        flushParagraph()
-        inCodeBlock = true
-        codeLanguage = line.slice(3).trim() || 'plaintext'
-        codeBlockLines = []
-      } else {
-        // End of code block
-        inCodeBlock = false
-        root.children.push({
-          type: 'block',
-          format: '',
-          version: 2,
-          fields: {
-            id: crypto.randomUUID?.() || Math.random().toString(36).slice(2),
-            code: codeBlockLines.join('\n'),
-            language: codeLanguage,
-            blockName: '',
-            blockType: 'code',
-          },
-        })
+      const codeBlockLines: string[] = []
+      currentLine++
+      while (currentLine < lines.length && !lines[currentLine].trim().startsWith('```')) {
+        codeBlockLines.push(lines[currentLine])
+        currentLine++
       }
-      continue
-    }
-
-    if (inCodeBlock) {
-      codeBlockLines.push(line)
+      children.push(codeBlock(codeBlockLines.join('\n')))
+      currentLine++
     } else {
-      if (line.trim() === '') {
-        flushParagraph()
-        continue
-      }
-
-      const segments = line.split(/(`[^`]+`)/g) // capture inline code
-      for (const seg of segments) {
-        if (seg.startsWith('`') && seg.endsWith('`')) {
-          currentParagraph.push({
-            mode: 'normal',
-            text: seg.slice(1, -1),
-            type: 'text',
-            style: '',
-            detail: 0,
-            format: 16, // inline code
-            version: 1,
-          })
-        } else {
-          const words = seg.split(/(\b)/g)
-          for (const word of words) {
-            if (/^[A-Z][A-Za-z0-9]*$/.test(word)) {
-              // Possibly a type like C, T, F
-              currentParagraph.push({
-                mode: 'normal',
-                text: word,
-                type: 'text',
-                style: '',
-                detail: 0,
-                format: 16,
-                version: 1,
-              })
-            } else {
-              currentParagraph.push({
-                mode: 'normal',
-                text: word,
-                type: 'text',
-                style: '',
-                detail: 0,
-                format: 0,
-                version: 1,
-              })
-            }
-          }
-        }
-      }
+      children.push(parseParagraph(line))
+      currentLine++
     }
   }
 
-  flushParagraph()
+  console.log(children)
 
-  return { root }
+  return {
+    root: {
+      type: 'root',
+      format: '',
+      indent: 0,
+      version: 1,
+      children,
+      direction: 'ltr',
+    },
+  }
 }
