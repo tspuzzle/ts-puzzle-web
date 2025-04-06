@@ -12,7 +12,9 @@ export const ChallengesListView = async () => {
   console.log('Challenges:', challenges)
   return (
     <>
-      <div></div>
+      <div className="py-3 mb-4">
+        <p className="text-body1 text-white">{challenges.length} challenges</p>
+      </div>
       <div className="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {challenges.map((challenge) => {
           const labels = challenge.labels as null | ChallengeLabel[]

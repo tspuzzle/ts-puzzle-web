@@ -57,7 +57,7 @@ export const seed = async ({ payload }: { payload: Payload }) => {
           description,
           difficulty: challenge.difficulty,
           labels: challengeLabelIds,
-          order: challenge.order,
+          order: Number(challenge.order),
         },
       })
     }),

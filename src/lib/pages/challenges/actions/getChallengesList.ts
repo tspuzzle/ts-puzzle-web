@@ -7,6 +7,7 @@ export const getChallengesList = async () => {
   return await payload.find({
     collection: 'challenges',
     select: { title: true, slug: true, labels: true, difficulty: true },
+    sort: 'order',
     pagination: false,
   })
 }
