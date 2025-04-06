@@ -37,6 +37,27 @@ const inlineCodeNode = (code: string) => {
   }
 }
 
+const parseHeader = (text: string, tag = 'h4') => {
+  return {
+    tag,
+    type: 'heading',
+    format: '',
+    indent: 0,
+    version: 1,
+    children: [
+      {
+        mode: 'normal',
+        text,
+        type: 'text',
+        style: '',
+        detail: 0,
+        format: 0,
+        version: 1,
+      },
+    ],
+    direction: 'ltr',
+  }
+}
 const parseParagraph = (text: string) => {
   const segments = text.split(/(`[^`]+`)/g) // capture inline code
   const children = []
@@ -82,13 +103,14 @@ export const convertStringToLexicalJSON = (input: string, skipEmptyParagraph = t
       }
       children.push(codeBlock(codeBlockLines.join('\n')))
       currentLine++
+    } else if (line.startsWith('**')) {
+      children.push(parseHeader(line.slice(2, -2), 'h3'))
+      currentLine++
     } else {
       children.push(parseParagraph(line))
       currentLine++
     }
   }
-
-  console.log(children)
 
   return {
     root: {
