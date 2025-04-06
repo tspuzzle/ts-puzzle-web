@@ -1,14 +1,5 @@
 import { slugField } from '@/(admin)/fields/slug'
 import type { CollectionConfig } from 'payload'
-import {
-  BlocksFeature,
-  FixedToolbarFeature,
-  HeadingFeature,
-  HorizontalRuleFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
-import { Code } from '@/(admin)/blocks/Code/config'
 
 export const Challenges: CollectionConfig = {
   slug: 'challenges',
@@ -44,21 +35,10 @@ export const Challenges: CollectionConfig = {
       name: 'description',
       type: 'richText',
       required: true,
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            FixedToolbarFeature(),
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            BlocksFeature({
-              blocks: [Code],
-              inlineBlocks: [],
-            }),
-            InlineToolbarFeature(),
-            HorizontalRuleFeature(),
-          ]
-        },
-      }),
+    },
+    {
+      name: 'solution',
+      type: 'richText',
     },
     {
       name: 'order',

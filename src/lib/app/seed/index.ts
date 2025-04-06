@@ -37,6 +37,7 @@ export const seed = async ({ payload }: { payload: Payload }) => {
       }, [] as number[])
 
       let description = addDescription()
+      let solution = addDescription()
 
       const challengeFolder = challengesFolders.find((folder) => folder.endsWith(challenge.slug))
       if (challengeFolder) {
@@ -46,6 +47,12 @@ export const seed = async ({ payload }: { payload: Payload }) => {
 
         const cleaned = rawContent.replace(/^---[\s\S]*?---\n/, '')
         description = convertStringToLexicalJSON(cleaned)
+
+        const solutionContent = getFileContent(
+          join(ROOT_CHALLENGES_FOLDER, challengeFolder, 'solution.md'),
+        )
+        const cleanedSolution = solutionContent.replace(/^---[\s\S]*?---\n/, '')
+        solution = convertStringToLexicalJSON(cleanedSolution)
       }
 
       return payload.db.upsert({
@@ -55,6 +62,7 @@ export const seed = async ({ payload }: { payload: Payload }) => {
           title: challenge.title,
           slug: challenge.slug,
           description,
+          solution,
           difficulty: challenge.difficulty,
           labels: challengeLabelIds,
           order: Number(challenge.order),
