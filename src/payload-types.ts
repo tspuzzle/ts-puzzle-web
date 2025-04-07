@@ -183,6 +183,42 @@ export interface Challenge {
     };
     [k: string]: unknown;
   };
+  testCases?:
+    | {
+        task?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        expected?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        test?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   solution?: {
     root: {
       type: string;
@@ -198,6 +234,7 @@ export interface Challenge {
     };
     [k: string]: unknown;
   } | null;
+  template?: string | null;
   order?: number | null;
   updatedAt: string;
   createdAt: string;
@@ -339,7 +376,16 @@ export interface ChallengesSelect<T extends boolean = true> {
   difficulty?: T;
   labels?: T;
   description?: T;
+  testCases?:
+    | T
+    | {
+        task?: T;
+        expected?: T;
+        test?: T;
+        id?: T;
+      };
   solution?: T;
+  template?: T;
   order?: T;
   updatedAt?: T;
   createdAt?: T;

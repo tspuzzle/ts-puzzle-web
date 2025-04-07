@@ -1,10 +1,15 @@
-import { getFileContent, getFolders } from '@/lib/utils/file'
-import { ChallengeLabel } from '@/payload-types'
+import { getFolders } from '@/lib/utils/file'
+import { Challenge, ChallengeLabel } from '@/payload-types'
 import { join } from 'path'
 import { Payload } from 'payload'
 import { challenges } from './data/challenges'
 import { addDescription } from './helpers/addDescription'
-import { convertStringToLexicalJSON } from './helpers/convertToLexicalJson'
+import {
+  extractDescription,
+  extractSolution,
+  extractTemplate,
+  extractTestCases,
+} from './helpers/extractChallengeFields'
 
 const ROOT_CHALLENGES_FOLDER = join(process.cwd(), '/src/lib/app/seed/data/challenges')
 console.log(ROOT_CHALLENGES_FOLDER)
@@ -27,7 +32,7 @@ export const seed = async ({ payload }: { payload: Payload }) => {
   const savedLabels = _savedLabels as ChallengeLabel[]
 
   await Promise.all(
-    challenges.map((challenge) => {
+    challenges.map(async (challenge) => {
       const challengeLabelIds = challenge.labels.reduce((acc, label) => {
         const savedLabel = savedLabels.find((savedLabel) => savedLabel.title === label)
         if (savedLabel) {
@@ -38,35 +43,57 @@ export const seed = async ({ payload }: { payload: Payload }) => {
 
       let description = addDescription()
       let solution = addDescription()
+      let template = ''
+      let testCases: any[] = []
 
       const challengeFolder = challengesFolders.find((folder) => folder.endsWith(challenge.slug))
       if (challengeFolder) {
-        const rawContent = getFileContent(
-          join(ROOT_CHALLENGES_FOLDER, challengeFolder, 'description.md'),
-        )
-
-        const cleaned = rawContent.replace(/^---[\s\S]*?---\n/, '')
-        description = convertStringToLexicalJSON(cleaned)
-
-        const solutionContent = getFileContent(
-          join(ROOT_CHALLENGES_FOLDER, challengeFolder, 'solution.md'),
-        )
-        const cleanedSolution = solutionContent.replace(/^---[\s\S]*?---\n/, '')
-        solution = convertStringToLexicalJSON(cleanedSolution)
+        description = extractDescription(challengeFolder)
+        solution = extractSolution(challengeFolder)
+        template = extractTemplate(challengeFolder)
+        testCases = extractTestCases(challengeFolder)
+        console.log('testCases', testCases)
       }
 
-      return payload.db.upsert({
+      const savedData: Pick<
+        Challenge,
+        | 'title'
+        | 'slug'
+        | 'description'
+        | 'solution'
+        | 'difficulty'
+        | 'labels'
+        | 'order'
+        | 'template'
+        | 'testCases'
+      > = {
+        title: challenge.title,
+        slug: challenge.slug,
+        description,
+        solution,
+        difficulty: challenge.difficulty as Challenge['difficulty'],
+        labels: challengeLabelIds,
+        order: Number(challenge.order),
+        template,
+        testCases,
+      }
+
+      const existedChallengeResponse = await payload.find({
         collection: 'challenges',
         where: { slug: { equals: challenge.slug } },
-        data: {
-          title: challenge.title,
-          slug: challenge.slug,
-          description,
-          solution,
-          difficulty: challenge.difficulty,
-          labels: challengeLabelIds,
-          order: Number(challenge.order),
-        },
+      })
+
+      if (existedChallengeResponse.totalDocs > 0) {
+        return payload.update({
+          collection: 'challenges',
+          id: existedChallengeResponse.docs[0].id,
+          data: savedData,
+        })
+      }
+
+      return payload.create({
+        collection: 'challenges',
+        data: savedData,
       })
     }),
   )
