@@ -81,7 +81,26 @@ const parseParagraph = (text: string) => {
   }
 }
 
-export const convertStringToLexicalJSON = (input: string, skipEmptyParagraph = true) => {
+type RichTextJson = {
+  root: {
+    type: string
+    children: {
+      type: string
+      version: number
+      [k: string]: unknown
+    }[]
+    direction: ('ltr' | 'rtl') | null
+    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+    indent: number
+    version: number
+  }
+  [k: string]: unknown
+}
+
+export const convertStringToLexicalJSON = (
+  input: string,
+  skipEmptyParagraph = true,
+): RichTextJson => {
   const lines = input.split('\n')
   const children: any[] = []
 

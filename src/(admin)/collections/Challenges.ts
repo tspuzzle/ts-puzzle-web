@@ -37,9 +37,33 @@ export const Challenges: CollectionConfig = {
       required: true,
     },
     {
+      name: 'testCases',
+      type: 'array',
+      admin: { initCollapsed: true },
+      fields: [
+        {
+          name: 'task',
+          type: 'richText',
+        },
+        {
+          name: 'expected',
+          type: 'richText',
+        },
+        {
+          name: 'test',
+          type: 'text',
+        },
+      ],
+    },
+    {
       name: 'solution',
       type: 'richText',
     },
+    {
+      name: 'template',
+      type: 'text',
+    },
+
     {
       name: 'order',
       type: 'number',
