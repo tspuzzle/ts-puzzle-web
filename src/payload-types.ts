@@ -255,6 +255,7 @@ export interface Lesson {
   slug: string;
   slugLock?: boolean | null;
   title: string;
+  description: string;
   order?: number | null;
   chapters?: {
     docs?: (number | Chapter)[];
@@ -468,6 +469,7 @@ export interface LessonsSelect<T extends boolean = true> {
   slug?: T;
   slugLock?: T;
   title?: T;
+  description?: T;
   order?: T;
   chapters?: T;
   updatedAt?: T;
