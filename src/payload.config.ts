@@ -7,10 +7,12 @@ import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
 import { Accounts } from './(admin)/collections/Account'
-import { ChallengeLabels } from './(admin)/collections/ChallengeLabels'
-import { Challenges } from './(admin)/collections/Challenges'
 import { Media } from './(admin)/collections/Media'
 import { Users } from './(admin)/collections/Users'
+
+import { Challenges, ChallengeLabels } from './(admin)/collections/challenges'
+import { Courses, Lessons, Chapters } from './(admin)/collections/courses'
+
 import { defaultLexical } from './(admin)/fields/defaultLexical'
 
 const filename = fileURLToPath(import.meta.url)
@@ -31,7 +33,7 @@ const payloadConfig = buildConfig({
       },
     },
   },
-  collections: [Users, Accounts, Challenges, ChallengeLabels, Media],
+  collections: [Challenges, ChallengeLabels, Courses, Lessons, Chapters, Users, Accounts, Media],
   editor: defaultLexical,
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

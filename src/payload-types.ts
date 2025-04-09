@@ -67,25 +67,37 @@ export interface Config {
   };
   blocks: {};
   collections: {
-    users: User;
-    accounts: Account;
     challenges: Challenge;
     challengeLabels: ChallengeLabel;
+    courses: Course;
+    lessons: Lesson;
+    chapters: Chapter;
+    users: User;
+    accounts: Account;
     media: Media;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
   collectionsJoins: {
+    courses: {
+      lessons: 'lessons';
+    };
+    lessons: {
+      chapters: 'chapters';
+    };
     users: {
       accounts: 'accounts';
     };
   };
   collectionsSelect: {
-    users: UsersSelect<false> | UsersSelect<true>;
-    accounts: AccountsSelect<false> | AccountsSelect<true>;
     challenges: ChallengesSelect<false> | ChallengesSelect<true>;
     challengeLabels: ChallengeLabelsSelect<false> | ChallengeLabelsSelect<true>;
+    courses: CoursesSelect<false> | CoursesSelect<true>;
+    lessons: LessonsSelect<false> | LessonsSelect<true>;
+    chapters: ChaptersSelect<false> | ChaptersSelect<true>;
+    users: UsersSelect<false> | UsersSelect<true>;
+    accounts: AccountsSelect<false> | AccountsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -122,40 +134,6 @@ export interface UserAuthOperations {
     email: string;
     password: string;
   };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-  id: number;
-  email: string;
-  name?: string | null;
-  image?: string | null;
-  emailVerified?: string | null;
-  password?: string | null;
-  accounts?: {
-    docs?: (number | Account)[];
-    hasNextPage?: boolean;
-    totalDocs?: number;
-  };
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "accounts".
- */
-export interface Account {
-  id: number;
-  type: string;
-  provider: string;
-  providerAccountId: string;
-  refreshToken?: string | null;
-  accessToken?: string | null;
-  user: number | User;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -251,6 +229,91 @@ export interface ChallengeLabel {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "courses".
+ */
+export interface Course {
+  id: number;
+  slug: string;
+  slugLock?: boolean | null;
+  title: string;
+  description?: string | null;
+  lessons?: {
+    docs?: (number | Lesson)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "lessons".
+ */
+export interface Lesson {
+  id: number;
+  course: number | Course;
+  slug: string;
+  slugLock?: boolean | null;
+  title: string;
+  order?: number | null;
+  chapters?: {
+    docs?: (number | Chapter)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "chapters".
+ */
+export interface Chapter {
+  id: number;
+  lesson: number | Lesson;
+  slug: string;
+  slugLock?: boolean | null;
+  title: string;
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: number;
+  email: string;
+  name?: string | null;
+  image?: string | null;
+  emailVerified?: string | null;
+  password?: string | null;
+  accounts?: {
+    docs?: (number | Account)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accounts".
+ */
+export interface Account {
+  id: number;
+  type: string;
+  provider: string;
+  providerAccountId: string;
+  refreshToken?: string | null;
+  accessToken?: string | null;
+  user: number | User;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
@@ -276,20 +339,32 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
-        relationTo: 'users';
-        value: number | User;
-      } | null)
-    | ({
-        relationTo: 'accounts';
-        value: number | Account;
-      } | null)
-    | ({
         relationTo: 'challenges';
         value: number | Challenge;
       } | null)
     | ({
         relationTo: 'challengeLabels';
         value: number | ChallengeLabel;
+      } | null)
+    | ({
+        relationTo: 'courses';
+        value: number | Course;
+      } | null)
+    | ({
+        relationTo: 'lessons';
+        value: number | Lesson;
+      } | null)
+    | ({
+        relationTo: 'chapters';
+        value: number | Chapter;
+      } | null)
+    | ({
+        relationTo: 'users';
+        value: number | User;
+      } | null)
+    | ({
+        relationTo: 'accounts';
+        value: number | Account;
       } | null)
     | ({
         relationTo: 'media';
@@ -339,34 +414,6 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users_select".
- */
-export interface UsersSelect<T extends boolean = true> {
-  email?: T;
-  name?: T;
-  image?: T;
-  emailVerified?: T;
-  password?: T;
-  accounts?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "accounts_select".
- */
-export interface AccountsSelect<T extends boolean = true> {
-  type?: T;
-  provider?: T;
-  providerAccountId?: T;
-  refreshToken?: T;
-  accessToken?: T;
-  user?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "challenges_select".
  */
 export interface ChallengesSelect<T extends boolean = true> {
@@ -396,6 +443,74 @@ export interface ChallengesSelect<T extends boolean = true> {
  */
 export interface ChallengeLabelsSelect<T extends boolean = true> {
   title?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "courses_select".
+ */
+export interface CoursesSelect<T extends boolean = true> {
+  slug?: T;
+  slugLock?: T;
+  title?: T;
+  description?: T;
+  lessons?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "lessons_select".
+ */
+export interface LessonsSelect<T extends boolean = true> {
+  course?: T;
+  slug?: T;
+  slugLock?: T;
+  title?: T;
+  order?: T;
+  chapters?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "chapters_select".
+ */
+export interface ChaptersSelect<T extends boolean = true> {
+  lesson?: T;
+  slug?: T;
+  slugLock?: T;
+  title?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users_select".
+ */
+export interface UsersSelect<T extends boolean = true> {
+  email?: T;
+  name?: T;
+  image?: T;
+  emailVerified?: T;
+  password?: T;
+  accounts?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accounts_select".
+ */
+export interface AccountsSelect<T extends boolean = true> {
+  type?: T;
+  provider?: T;
+  providerAccountId?: T;
+  refreshToken?: T;
+  accessToken?: T;
+  user?: T;
   updatedAt?: T;
   createdAt?: T;
 }

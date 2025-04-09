@@ -1,10 +1,12 @@
 import { slugField } from '@/(admin)/fields/slug'
 import type { CollectionConfig } from 'payload'
+import { adminGroup } from './config'
 
 export const Challenges: CollectionConfig = {
   slug: 'challenges',
   admin: {
     useAsTitle: 'title',
+    group: adminGroup,
   },
   fields: [
     ...slugField('title', { slugOverrides: { required: true } }),
