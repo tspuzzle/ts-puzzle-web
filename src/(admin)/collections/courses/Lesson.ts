@@ -25,6 +25,12 @@ export const Lessons: CollectionConfig = {
     },
 
     {
+      name: 'description',
+      type: 'text',
+      required: true,
+    },
+
+    {
       name: 'order',
       type: 'number',
     },

@@ -25,7 +25,7 @@ export const Header = () => {
           </li>
           <li>
             <Button variant="navigation" size="navigation">
-              <Link href={routes.courses}>Course</Link>
+              <Link href={routes.courses.list}>Course</Link>
             </Button>
           </li>
           <li>
