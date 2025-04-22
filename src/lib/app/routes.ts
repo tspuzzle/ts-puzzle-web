@@ -16,7 +16,7 @@ const routes = {
   courses: Object.assign(
     (courseSlug: string) => ({
       lessons: (lessonSlug: string) => {
-        return `/courses/${courseSlug}/lessons/${lessonSlug}`
+        return `/courses/${courseSlug}/${lessonSlug}`
       },
     }),
     {

@@ -252,6 +252,7 @@ export interface Course {
 export interface Lesson {
   id: number;
   course: number | Course;
+  courseSlug?: string | null;
   slug: string;
   slugLock?: boolean | null;
   title: string;
@@ -275,6 +276,21 @@ export interface Chapter {
   slug: string;
   slugLock?: boolean | null;
   title: string;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   order?: number | null;
   updatedAt: string;
   createdAt: string;
@@ -466,6 +482,7 @@ export interface CoursesSelect<T extends boolean = true> {
  */
 export interface LessonsSelect<T extends boolean = true> {
   course?: T;
+  courseSlug?: T;
   slug?: T;
   slugLock?: T;
   title?: T;
@@ -484,6 +501,7 @@ export interface ChaptersSelect<T extends boolean = true> {
   slug?: T;
   slugLock?: T;
   title?: T;
+  content?: T;
   order?: T;
   updatedAt?: T;
   createdAt?: T;
