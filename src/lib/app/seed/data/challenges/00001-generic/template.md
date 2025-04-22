@@ -1,0 +1,1 @@
+type PaginatedResponse<T> = any;

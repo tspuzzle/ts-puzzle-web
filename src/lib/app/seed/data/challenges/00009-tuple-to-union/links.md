@@ -1,0 +1,2 @@
+Explanation: https://github.com/ghaiklor/type-challenges-solutions/blob/main/en/medium-tuple-to-union.md
+Challenge: https://github.com/type-challenges/type-challenges/tree/main/questions/00010-medium-tuple-to-union

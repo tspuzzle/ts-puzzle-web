@@ -1,9 +1,21 @@
-import * as migration_20250331_125547_init_schema from './20250331_125547_init_schema';
+import * as migration_20250331_185942_init_shcema from './20250331_185942_init_shcema';
+import * as migration_20250401_210314_add_challenge_collection from './20250401_210314_add_challenge_collection';
+import * as migration_20250422_100319_content_for_chapter from './20250422_100319_content_for_chapter';
 
 export const migrations = [
   {
-    up: migration_20250331_125547_init_schema.up,
-    down: migration_20250331_125547_init_schema.down,
-    name: '20250331_125547_init_schema'
+    up: migration_20250331_185942_init_shcema.up,
+    down: migration_20250331_185942_init_shcema.down,
+    name: '20250331_185942_init_shcema',
+  },
+  {
+    up: migration_20250401_210314_add_challenge_collection.up,
+    down: migration_20250401_210314_add_challenge_collection.down,
+    name: '20250401_210314_add_challenge_collection',
+  },
+  {
+    up: migration_20250422_100319_content_for_chapter.up,
+    down: migration_20250422_100319_content_for_chapter.down,
+    name: '20250422_100319_content_for_chapter'
   },
 ];

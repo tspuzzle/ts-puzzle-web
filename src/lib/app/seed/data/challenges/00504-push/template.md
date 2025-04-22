@@ -1,0 +1,1 @@
+type Push<T, K> = any;

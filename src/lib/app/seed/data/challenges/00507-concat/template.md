@@ -1,0 +1,1 @@
+type Concat<A1,A2> = any;

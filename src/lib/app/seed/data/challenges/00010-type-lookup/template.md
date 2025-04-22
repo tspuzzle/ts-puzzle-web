@@ -1,0 +1,1 @@
+type LookUp<T, K> = any;

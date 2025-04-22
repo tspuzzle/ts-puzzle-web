@@ -1,0 +1,1 @@
+type LookupPathParser<P> = any;

@@ -1,0 +1,1 @@
+type PropertyLookup<T, Path>= any;

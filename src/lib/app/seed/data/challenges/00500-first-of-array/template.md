@@ -1,0 +1,1 @@
+type First<T> = any;

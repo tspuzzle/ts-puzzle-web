@@ -1,0 +1,1 @@
+type StartsWith<T, U> = any;

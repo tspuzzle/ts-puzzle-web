@@ -1,0 +1,1 @@
+type IsString<T> = any;

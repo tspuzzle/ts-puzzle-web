@@ -1,0 +1,1 @@
+type Zip<A1, A2> = any;
