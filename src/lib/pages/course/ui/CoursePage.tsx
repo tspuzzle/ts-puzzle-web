@@ -7,6 +7,7 @@ import { BrandBackgroundCard } from '@/lib/shared/ui'
 
 export const CoursePage = async ({ courseSlug }: { courseSlug: string }) => {
   const course = await getCourse({ courseSlug })
+  const lessons = (course?.lessons?.docs || []) as Lesson[]
   return (
     <div className="px-4 bg-white min-h-[100vh-80px] h-full">
       <BrandBackgroundCard>
@@ -16,11 +17,16 @@ export const CoursePage = async ({ courseSlug }: { courseSlug: string }) => {
         </div>
       </BrandBackgroundCard>
       <div className="flex flex-col space-y-4 mt-4">
-        {(course?.lessons?.docs || []).map((_lesson, index) => {
-          const lesson = _lesson as Lesson
+        {lessons.map((lesson, index) => {
           const chapterCounts = (lesson?.chapters?.docs || []).length
           return (
-            <Link href={routes.courses(course.slug).lessons(lesson.slug)} key={lesson.slug}>
+            <Link
+              href={routes.courses.lessons.bySlug({
+                courseSlug: course.slug,
+                lessonSlug: lesson.slug,
+              })}
+              key={lesson.slug}
+            >
               <article
                 key={lesson.slug}
                 className="p-6 border border-grey-100 rounded-lg flex flex-col gap-4 hover:border-primary"
