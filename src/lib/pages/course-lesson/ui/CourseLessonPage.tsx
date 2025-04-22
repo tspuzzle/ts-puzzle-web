@@ -1,0 +1,69 @@
+import { BrandBackgroundCard } from '@/lib/shared/ui'
+import { getCourseLesson } from '../actions/getCourseLesson'
+import { Chapter, Course } from '@/payload-types'
+import { SlMenu } from 'react-icons/sl'
+import Link from 'next/link'
+import routes from '@/lib/app/routes'
+import RichText from '@/lib/shared/components/RichText'
+
+export const CourseLessonPage = async ({
+  courseSlug,
+  lessonSlug,
+}: {
+  courseSlug: string
+  lessonSlug: string
+}) => {
+  const lesson = await getCourseLesson({ courseSlug, lessonSlug })
+  const course = lesson.course as Course
+
+  const chapters = (lesson.chapters?.docs || []) as Chapter[]
+
+  const currentChapter = chapters?.[0]
+
+  if (!currentChapter) {
+    return null
+  }
+
+  console.log(lesson)
+  return (
+    <div className="px-4 bg-white min-h-[100vh-80px] h-full">
+      <BrandBackgroundCard className="p-6 flex justify-between items-center">
+        <h1 className="text-h4 text-primary-contrast">{course.title}</h1>
+        <Link href={routes.courses.bySlug(course.slug)}>
+          <SlMenu className="fill-primary-contrast cursor-pointer" />
+        </Link>
+      </BrandBackgroundCard>
+      <div className="pt-4 flex gap-12">
+        <div className="grow-1 flex justify-center">
+          <div className="w-full max-w-[720px]">
+            <div className="border-b border-grey-100 pb-4">
+              <div>
+                <span className="text-h6 text-primary">PART 1</span>
+                <span className="text-h6 text-grey-600 pl-1">OF {chapters.length}</span>
+              </div>
+              <h2 className="text-h2 text-primary-text">{lesson.title}</h2>
+            </div>
+
+            <h1 className="text-h4 pt-8 text-primary-text">{currentChapter.title}</h1>
+            {currentChapter.content && (
+              <div className="pt-8">
+                <RichText data={currentChapter.content} />
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="w-[380px] flex flex-col gap-4">
+          {chapters.map((chapter, i) => (
+            <div
+              key={chapter.id}
+              className="p-4 border border-grey-100 rounded-lg flex flex-col gap-2"
+            >
+              <p className="text-h6 text-primary">PART {i + 1}</p>
+              <h5 className="text-h5 text-primary-dark">{chapter.title}</h5>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}

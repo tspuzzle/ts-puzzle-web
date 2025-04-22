@@ -8,6 +8,17 @@ export const Lessons: CollectionConfig = {
     useAsTitle: 'title',
     group: adminGroup,
   },
+  hooks: {
+    beforeChange: [
+      async ({ data, req: { payload } }) => {
+        const course = await payload.findByID({
+          collection: 'courses',
+          id: data.course,
+        })
+        return { ...data, courseSlug: course.slug }
+      },
+    ],
+  },
   fields: [
     {
       name: 'course',
@@ -15,6 +26,12 @@ export const Lessons: CollectionConfig = {
       relationTo: 'courses',
       hasMany: false,
       required: true,
+    },
+    {
+      name: 'courseSlug',
+      type: 'text',
+      index: true,
+      admin: { hidden: true },
     },
 
     ...slugField('title', { slugOverrides: { required: true } }),

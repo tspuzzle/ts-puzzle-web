@@ -25,6 +25,12 @@ export const Chapters: CollectionConfig = {
     },
 
     {
+      name: 'content',
+      type: 'richText',
+      label: 'Content',
+    },
+
+    {
       name: 'order',
       type: 'number',
     },

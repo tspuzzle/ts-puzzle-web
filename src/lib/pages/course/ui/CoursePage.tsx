@@ -1,20 +1,20 @@
-import { getCourse } from '../actions/getCourse'
-import { Chapter, Lesson } from '@/payload-types'
 import routes from '@/lib/app/routes'
-import Link from 'next/link'
 import { Chip } from '@/lib/shared/ui/chips/Chip'
+import { Lesson } from '@/payload-types'
+import Link from 'next/link'
+import { getCourse } from '../actions/getCourse'
+import { BrandBackgroundCard } from '@/lib/shared/ui'
 
 export const CoursePage = async ({ courseSlug }: { courseSlug: string }) => {
   const course = await getCourse({ courseSlug })
-  console.log(course)
   return (
     <div className="px-4 bg-white min-h-[100vh-80px] h-full">
-      <div className="dark:bg-[url(/course-cover-dark.jpg)] bg-[url(/course-cover.jpg)] py-12 px-8 bg-cover bg-right rounded-2xl">
+      <BrandBackgroundCard>
         <div className="flex flex-col gap-4 max-w-[1000px]">
           <h1 className="text-h2 text-primary-contrast font-bold">{course?.title}</h1>
           <span className="text-subtitle text-primary-light">{course?.description}</span>
         </div>
-      </div>
+      </BrandBackgroundCard>
       <div className="flex flex-col space-y-4 mt-4">
         {(course?.lessons?.docs || []).map((_lesson, index) => {
           const lesson = _lesson as Lesson
