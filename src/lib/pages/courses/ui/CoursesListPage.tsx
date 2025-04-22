@@ -8,7 +8,7 @@ export const CoursesListPage = async () => {
     <div>
       <h1>Courses</h1>
       {courses.map((course) => (
-        <Link key={course.id} href={routes.courses.bySlug(course.slug)}>
+        <Link key={course.id} href={routes.courses.bySlug({ courseSlug: course.slug })}>
           <div>{course.title}</div>
         </Link>
       ))}

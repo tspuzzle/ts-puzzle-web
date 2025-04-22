@@ -13,17 +13,28 @@ const routes = {
     list: '/challenges',
     bySlug: (slug: string) => `/challenges/${slug}`,
   },
-  courses: Object.assign(
-    (courseSlug: string) => ({
-      lessons: (lessonSlug: string) => {
+  courses: {
+    list: '/courses',
+    bySlug: ({ courseSlug }: { courseSlug: string }) => `/courses/${courseSlug}`,
+    lessons: {
+      bySlug: ({ courseSlug, lessonSlug }: { courseSlug: string; lessonSlug: string }) => {
         return `/courses/${courseSlug}/${lessonSlug}`
       },
-    }),
-    {
-      list: '/courses',
-      bySlug: (courseSlug: string) => `/courses/${courseSlug}`,
     },
-  ),
+    chapters: {
+      bySlug: ({
+        chapterSlug,
+        lessonSlug,
+        courseSlug,
+      }: {
+        courseSlug: string
+        lessonSlug: string
+        chapterSlug: string
+      }) => {
+        return `/courses/${courseSlug}/${lessonSlug}/${chapterSlug}`
+      },
+    },
+  },
 }
 
 export default routes
