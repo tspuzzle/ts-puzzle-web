@@ -1,7 +1,7 @@
 'use client'
+import { useThemeCodePallete } from '@/lib/app/styles/useThemeCodePallete'
 import { Highlight, PrismTheme, themes } from 'prism-react-renderer'
-import React, { useEffect } from 'react'
-import { CopyButton } from './CopyButton'
+import React from 'react'
 
 type Props = {
   code: string
@@ -9,50 +9,7 @@ type Props = {
 }
 
 export const Code: React.FC<Props> = ({ code, language = '' }) => {
-  const [colorPallete, setColorPallete] = React.useState<{
-    green: string
-    grey: string
-    orange: string
-    purple: string
-    lightBlue: string
-    darkBlue: string
-    red: string
-    white: string
-  }>({
-    green: '#14c75b',
-    grey: '#a7a9b0',
-    orange: '#faae44',
-    purple: '#cb47ff',
-    lightBlue: '#24abff',
-    darkBlue: '#3c40bf',
-    red: '#fe5f55',
-    white: '#ffffff',
-  })
-
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      const styles = getComputedStyle(document.body)
-
-      setColorPallete({
-        green: styles.getPropertyValue('--color-code-green'),
-        grey: styles.getPropertyValue('--color-code-grey'),
-        orange: styles.getPropertyValue('--color-code-orange'),
-        purple: styles.getPropertyValue('--color-code-purple'),
-        lightBlue: styles.getPropertyValue('--color-code-light-blue'),
-        darkBlue: styles.getPropertyValue('--color-code-dark-blue'),
-        red: styles.getPropertyValue('--color-code-red'),
-        white: styles.getPropertyValue('--color-code-white'),
-      })
-    })
-
-    observer.observe(document.body, {
-      attributes: true,
-    })
-
-    return () => {
-      observer.disconnect()
-    }
-  }, [])
+  const colorPallete = useThemeCodePallete()
 
   if (!code) return null
 
@@ -95,7 +52,7 @@ export const Code: React.FC<Props> = ({ code, language = '' }) => {
       {
         types: ['attr-name', 'variable'],
         style: {
-          color: 'rgb(156, 220, 254)',
+          color: colorPallete?.green,
         },
       },
       {
