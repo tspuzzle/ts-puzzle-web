@@ -12,6 +12,7 @@ import {
 
 import { CodeBlock, CodeBlockProps } from '@/(admin)/blocks/Code/Component'
 import { QuoteBlock, QuoteBlockProps } from '@/(admin)/blocks/Quote/Component'
+import { CodeEditorBlock, CodeEditorBlockProps } from '@/(admin)/blocks/CodeEditor/Component'
 
 import { cn } from '@/lib/utils'
 
@@ -20,6 +21,7 @@ import './styles.scss'
 type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<CodeBlockProps>
+  | SerializedBlockNode<CodeEditorBlockProps>
   | SerializedBlockNode<QuoteBlockProps>
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
@@ -37,6 +39,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
   blocks: {
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
     quote: ({ node }) => <QuoteBlock {...node.fields} />,
+    codeEditor: ({ node }) => <CodeEditorBlock {...node.fields} />,
   },
 })
 

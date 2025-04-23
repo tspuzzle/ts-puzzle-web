@@ -1,5 +1,7 @@
 import { Code } from '@/(admin)/blocks/Code/config'
 import { Quote } from '@/(admin)/blocks/Quote/config'
+import { CodeEditor } from '@/(admin)/blocks/CodeEditor/config'
+
 import {
   BlocksFeature,
   FixedToolbarFeature,
@@ -18,7 +20,7 @@ export const defaultLexical: Config['editor'] = lexicalEditor({
       FixedToolbarFeature(),
       HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
       BlocksFeature({
-        blocks: [Code, Quote],
+        blocks: [Code, CodeEditor, Quote],
         inlineBlocks: [],
       }),
       LinkFeature(),
