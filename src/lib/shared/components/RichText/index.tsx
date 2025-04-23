@@ -11,12 +11,16 @@ import {
 } from '@payloadcms/richtext-lexical/react'
 
 import { CodeBlock, CodeBlockProps } from '@/(admin)/blocks/Code/Component'
+import { QuoteBlock, QuoteBlockProps } from '@/(admin)/blocks/Quote/Component'
 
 import { cn } from '@/lib/utils'
 
 import './styles.scss'
 
-type NodeTypes = DefaultNodeTypes | SerializedBlockNode<CodeBlockProps>
+type NodeTypes =
+  | DefaultNodeTypes
+  | SerializedBlockNode<CodeBlockProps>
+  | SerializedBlockNode<QuoteBlockProps>
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!
@@ -32,6 +36,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
   ...LinkJSXConverter({ internalDocToHref }),
   blocks: {
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
+    quote: ({ node }) => <QuoteBlock {...node.fields} />,
   },
 })
 

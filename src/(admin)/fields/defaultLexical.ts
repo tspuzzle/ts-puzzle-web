@@ -1,4 +1,5 @@
-import { Config, TextFieldSingleValidation } from 'payload'
+import { Code } from '@/(admin)/blocks/Code/config'
+import { Quote } from '@/(admin)/blocks/Quote/config'
 import {
   BlocksFeature,
   FixedToolbarFeature,
@@ -6,10 +7,9 @@ import {
   HorizontalRuleFeature,
   InlineToolbarFeature,
   LinkFeature,
-  LinkFields,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
-import { Code } from '@/(admin)/blocks/Code/config'
+import { Config } from 'payload'
 
 export const defaultLexical: Config['editor'] = lexicalEditor({
   features: ({ rootFeatures }) => {
@@ -18,7 +18,7 @@ export const defaultLexical: Config['editor'] = lexicalEditor({
       FixedToolbarFeature(),
       HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
       BlocksFeature({
-        blocks: [Code],
+        blocks: [Code, Quote],
         inlineBlocks: [],
       }),
       LinkFeature(),
