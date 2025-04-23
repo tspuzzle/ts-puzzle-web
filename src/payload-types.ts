@@ -597,6 +597,17 @@ export interface CodeBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CodeEditorBlock".
+ */
+export interface CodeEditorBlock {
+  language?: ('typescript' | 'javascript') | null;
+  code: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'codeEditor';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "QuoteBlock".
  */
 export interface QuoteBlock {
