@@ -5,6 +5,7 @@ import { Course } from '@/payload-types'
 import Link from 'next/link'
 import { SlMenu } from 'react-icons/sl'
 import { getCourseLesson } from '../actions/getCourseLesson'
+import { ChapterNavigationItem } from '../components/ChapterNavigationItem'
 
 export const CourseLessonPage = async ({
   courseSlug,
@@ -63,10 +64,11 @@ export const CourseLessonPage = async ({
                 chapterSlug: chapter.slug,
               })}
             >
-              <div className="p-4 border border-grey-100 rounded-lg flex flex-col gap-2">
-                <p className="text-h6 text-primary">PART {i + 1}</p>
-                <h5 className="text-h5 text-primary-dark">{chapter.title}</h5>
-              </div>
+              <ChapterNavigationItem
+                chapter={chapter}
+                index={i}
+                checkedIndex={currentChapterIndex}
+              />
             </Link>
           ))}
         </div>
