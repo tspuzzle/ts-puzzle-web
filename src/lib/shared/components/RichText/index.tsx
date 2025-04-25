@@ -39,8 +39,6 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
   ...defaultConverters,
   ...LinkJSXConverter({ internalDocToHref }),
   upload: ({ node }) => {
-    console.log('node', node)
-
     if (node.relationTo === 'media') {
       const uploadDoc = node.value
       if (typeof uploadDoc !== 'object') {
