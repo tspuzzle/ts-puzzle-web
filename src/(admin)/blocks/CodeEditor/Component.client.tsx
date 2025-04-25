@@ -2,12 +2,14 @@
 import { useThemeCodePallete } from '@/lib/app/styles/useThemeCodePallete'
 import { useThemePallete } from '@/lib/app/styles/useThemePallete'
 import { Editor, useMonaco } from '@monaco-editor/react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 type Props = {
   code: string
   language?: string
 }
+const LINE_MULTIPLIER = 24
+
 export const CodeEditor: React.FC<Props> = ({ code, language }) => {
   const monaco = useMonaco()
   const codePallete = useThemeCodePallete()
@@ -32,10 +34,20 @@ export const CodeEditor: React.FC<Props> = ({ code, language }) => {
     }
   }, [codePallete, themePallete, monaco])
 
+  useEffect(() => {
+    if (monaco) {
+      monaco.editor.onDidChangeMarkers(() => {
+        console.log('test')
+      })
+    }
+  }, [monaco])
+
   const content = 'export {}; \n'.concat(code || '')
-  const height = content.split('\n').length * 24.2
+
+  const [height, setHeight] = useState((content.split('\n').length - 1) * LINE_MULTIPLIER)
+
   return (
-    <div className="bg-grey-50 p-4 text-code rounded overflow-x-auto my-4">
+    <div className="bg-grey-50 p-4 text-code rounded  my-4">
       <Editor
         height={height}
         value={content}
@@ -73,6 +85,13 @@ export const CodeEditor: React.FC<Props> = ({ code, language }) => {
             // hide the first line that contain "export {};"
             const _editor = editor as any
             _editor.setHiddenAreas([new monaco.Range(1, 1, 1, 1)])
+          }
+
+          if (editor) {
+            editor.onDidChangeModelContent(() => {
+              const lineCount = editor.getModel()?.getLineCount() || 0
+              setHeight((lineCount - 1) * LINE_MULTIPLIER)
+            })
           }
 
           monaco.editor.setTheme('customTheme')

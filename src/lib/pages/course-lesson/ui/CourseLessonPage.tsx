@@ -54,23 +54,25 @@ export const CourseLessonPage = async ({
             )}
           </div>
         </div>
-        <div className="w-[380px] flex flex-col gap-4">
-          {chapters.map((chapter, i) => (
-            <Link
-              key={chapter.id}
-              href={routes.courses.chapters.bySlug({
-                courseSlug,
-                lessonSlug,
-                chapterSlug: chapter.slug,
-              })}
-            >
-              <ChapterNavigationItem
-                chapter={chapter}
-                index={i}
-                checkedIndex={currentChapterIndex}
-              />
-            </Link>
-          ))}
+        <div className="w-[380px] flex flex-col gap-4 ">
+          <div className="sticky top-6">
+            {chapters.map((chapter, i) => (
+              <Link
+                key={chapter.id}
+                href={routes.courses.chapters.bySlug({
+                  courseSlug,
+                  lessonSlug,
+                  chapterSlug: chapter.slug,
+                })}
+              >
+                <ChapterNavigationItem
+                  chapter={chapter}
+                  index={i}
+                  checkedIndex={currentChapterIndex}
+                />
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </div>
