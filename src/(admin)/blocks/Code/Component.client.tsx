@@ -28,7 +28,7 @@ export const Code: React.FC<Props> = ({ code, language = '' }) => {
       {
         types: ['comment'],
         style: {
-          color: 'rgb(106, 153, 85)',
+          color: colorPallete?.grey,
         },
       },
       {
@@ -51,6 +51,12 @@ export const Code: React.FC<Props> = ({ code, language = '' }) => {
       },
       {
         types: ['attr-name', 'variable'],
+        style: {
+          color: colorPallete?.green,
+        },
+      },
+      {
+        types: ['plain'],
         style: {
           color: colorPallete?.green,
         },
@@ -120,7 +126,6 @@ export const Code: React.FC<Props> = ({ code, language = '' }) => {
     ],
   }
 
-  console.log('Code:', themes.vsDark)
   return (
     <Highlight code={code} language={language} theme={theme}>
       {({ getLineProps, getTokenProps, tokens }) => (

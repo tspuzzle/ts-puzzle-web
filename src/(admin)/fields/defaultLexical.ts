@@ -8,7 +8,10 @@ import {
   HeadingFeature,
   HorizontalRuleFeature,
   InlineToolbarFeature,
+  InlineCodeFeature,
   LinkFeature,
+  ChecklistFeature,
+  UploadFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 import { Config } from 'payload'
@@ -25,7 +28,17 @@ export const defaultLexical: Config['editor'] = lexicalEditor({
       }),
       LinkFeature(),
       InlineToolbarFeature(),
+      InlineCodeFeature(),
       HorizontalRuleFeature(),
+      ChecklistFeature(),
+      UploadFeature({
+        collections: {
+          media: {
+            fields: [{ name: 'alt`', type: 'text', label: 'Alt Text' }],
+          },
+        },
+        maxDepth: 1,
+      }),
     ]
   },
 })
