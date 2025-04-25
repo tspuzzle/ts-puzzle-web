@@ -9,6 +9,7 @@ import {
   LinkJSXConverter,
   RichText as ConvertRichText,
 } from '@payloadcms/richtext-lexical/react'
+import Image from 'next/image'
 
 import { CodeBlock, CodeBlockProps } from '@/(admin)/blocks/Code/Component'
 import { QuoteBlock, QuoteBlockProps } from '@/(admin)/blocks/Quote/Component'
@@ -17,6 +18,7 @@ import { CodeEditorBlock, CodeEditorBlockProps } from '@/(admin)/blocks/CodeEdit
 import { cn } from '@/lib/utils'
 
 import './styles.scss'
+import { Media } from '@/payload-types'
 
 type NodeTypes =
   | DefaultNodeTypes
@@ -36,6 +38,34 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) => ({
   ...defaultConverters,
   ...LinkJSXConverter({ internalDocToHref }),
+  upload: ({ node }) => {
+    console.log('node', node)
+
+    if (node.relationTo === 'media') {
+      const uploadDoc = node.value
+      if (typeof uploadDoc !== 'object') {
+        return null
+      }
+      const { alt, height, url, width } = uploadDoc as Media
+      if (!url) {
+        return null
+      }
+
+      const aspectRatio = width && height ? width / height : 16 / 9
+      return (
+        <Image
+          alt={alt}
+          src={url}
+          sizes="100vw"
+          width={720}
+          height={720 / aspectRatio}
+          style={{ width: '100%', height: 'auto' }}
+        />
+      )
+    }
+
+    return null
+  },
   blocks: {
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
     quote: ({ node }) => <QuoteBlock {...node.fields} />,

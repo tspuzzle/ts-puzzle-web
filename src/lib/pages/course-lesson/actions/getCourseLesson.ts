@@ -31,10 +31,16 @@ export const getCourseLesson = async ({
   const _currentChapterIndex = chapters.findIndex((chapter) => chapter.slug === chapterSlug)
   const currentChapterIndex = _currentChapterIndex === -1 ? 0 : _currentChapterIndex
 
+  const currentChapter = await payload.findByID({
+    collection: 'chapters',
+    id: chapters[currentChapterIndex].id,
+    depth: 1,
+  })
+
   return {
     lesson,
     chapters,
     currentChapterIndex,
-    currentChapter: chapters[currentChapterIndex],
+    currentChapter,
   }
 }
