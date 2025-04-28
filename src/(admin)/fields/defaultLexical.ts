@@ -12,6 +12,16 @@ import {
   LinkFeature,
   ChecklistFeature,
   UploadFeature,
+  BoldFeature,
+  ItalicFeature,
+  UnderlineFeature,
+  StrikethroughFeature,
+  SubscriptFeature,
+  SuperscriptFeature,
+  UnorderedListFeature,
+  OrderedListFeature,
+  IndentFeature,
+  AlignFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 import { Config } from 'payload'
@@ -21,6 +31,16 @@ export const defaultLexical: Config['editor'] = lexicalEditor({
     return [
       //...rootFeatures,
       FixedToolbarFeature(),
+      BoldFeature(),
+      ItalicFeature(),
+      UnderlineFeature(),
+      StrikethroughFeature(),
+      IndentFeature(),
+      SubscriptFeature(),
+      SuperscriptFeature(),
+      AlignFeature(),
+      UnorderedListFeature(),
+      OrderedListFeature(),
       HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
       BlocksFeature({
         blocks: [Code, CodeEditor, Quote],
