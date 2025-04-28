@@ -26,6 +26,7 @@ export const Chapters: CollectionConfig = {
     },
 
     ...slugField('title', { slugOverrides: { required: true } }),
+
     {
       name: 'title',
       type: 'text',
@@ -33,9 +34,80 @@ export const Chapters: CollectionConfig = {
     },
 
     {
+      label: 'Type',
+      name: 'type',
+      type: 'select',
+      options: [
+        {
+          label: 'Text',
+          value: 'text',
+        },
+        {
+          label: 'Test',
+          value: 'test',
+        },
+      ],
+      defaultValue: 'text',
+    },
+
+    {
       name: 'content',
       type: 'richText',
       label: 'Content',
+      admin: {
+        condition: (data) => {
+          return data.type === 'text'
+        },
+      },
+    },
+
+    {
+      name: 'questions',
+      label: 'Questions',
+      type: 'array',
+      fields: [
+        {
+          name: 'question',
+          type: 'richText',
+          label: 'Question',
+        },
+        {
+          name: 'type',
+          type: 'select',
+          label: 'Type',
+          options: [
+            {
+              label: 'Single',
+              value: 'single',
+            },
+            {
+              label: 'Multiple',
+              value: 'multiple',
+            },
+          ],
+          defaultValue: 'single',
+        },
+        {
+          name: 'answers',
+          type: 'array',
+          label: 'Answers',
+          fields: [
+            {
+              name: 'answer',
+              type: 'richText',
+              label: 'Answer',
+            },
+            {
+              name: 'isCorrect',
+              type: 'checkbox',
+              label: 'Is Correct?',
+            },
+          ],
+        },
+      ],
+      admin: {
+        condition: (data) => data.type === 'test',
+      },
     },
 
     {
