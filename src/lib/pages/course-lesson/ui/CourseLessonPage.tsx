@@ -54,8 +54,8 @@ export const CourseLessonPage = async ({
             )}
           </div>
         </div>
-        <div className="w-[380px] flex flex-col gap-4 ">
-          <div className="sticky top-6">
+        <div className="w-[380px]">
+          <div className="sticky top-6 flex flex-col gap-4">
             {chapters.map((chapter, i) => (
               <Link
                 key={chapter.id}
