@@ -18,8 +18,8 @@ export default auth((req) => {
       return NextResponse.redirect(new URL('/', req.url))
     }
   }
-  console.log('ROUTE:', req.nextUrl.pathname)
-  console.log('IS LOGGED IN', isLoggedIn)
+  // console.log('ROUTE:', req.nextUrl.pathname)
+  // console.log('IS LOGGED IN', isLoggedIn)
 })
 
 export const config = {

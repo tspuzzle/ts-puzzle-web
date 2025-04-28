@@ -1,9 +1,10 @@
 'use server'
 import { Chapter, Lesson } from '@/payload-types'
+import { unstable_cache } from 'next/cache'
 
 import { getPayload } from '@/payload.config'
 
-export const getCourseLesson = async ({
+export const _getCourseLesson = async ({
   courseSlug,
   lessonSlug,
   chapterSlug,
@@ -44,3 +45,7 @@ export const getCourseLesson = async ({
     currentChapter,
   }
 }
+
+export const getCourseLesson = unstable_cache(_getCourseLesson, undefined, {
+  revalidate: 60,
+})
