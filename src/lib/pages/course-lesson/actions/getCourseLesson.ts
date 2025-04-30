@@ -47,5 +47,5 @@ export const _getCourseLesson = async ({
 }
 
 export const getCourseLesson = unstable_cache(_getCourseLesson, undefined, {
-  revalidate: 60,
+  tags: ['course-lesson'],
 })

@@ -1,6 +1,7 @@
 import { slugField } from '@/(admin)/fields/slug'
 import type { CollectionConfig } from 'payload'
 import { adminGroup } from './config'
+import { revalidateTag } from 'next/cache'
 
 export const Lessons: CollectionConfig = {
   slug: 'lessons',
@@ -10,6 +11,9 @@ export const Lessons: CollectionConfig = {
   },
   hooks: {
     beforeChange: [
+      async () => {
+        revalidateTag('course-lesson')
+      },
       async ({ data, req: { payload } }) => {
         const course = await payload.findByID({
           collection: 'courses',

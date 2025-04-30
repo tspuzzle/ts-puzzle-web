@@ -276,6 +276,7 @@ export interface Chapter {
   slug: string;
   slugLock?: boolean | null;
   title: string;
+  type?: ('text' | 'test') | null;
   content?: {
     root: {
       type: string;
@@ -291,6 +292,48 @@ export interface Chapter {
     };
     [k: string]: unknown;
   } | null;
+  questions?:
+    | {
+        question: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        type: 'single' | 'multiple';
+        answers?:
+          | {
+              answer: {
+                root: {
+                  type: string;
+                  children: {
+                    type: string;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              isCorrect: boolean;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
   order?: number | null;
   updatedAt: string;
   createdAt: string;
@@ -501,7 +544,22 @@ export interface ChaptersSelect<T extends boolean = true> {
   slug?: T;
   slugLock?: T;
   title?: T;
+  type?: T;
   content?: T;
+  questions?:
+    | T
+    | {
+        question?: T;
+        type?: T;
+        answers?:
+          | T
+          | {
+              answer?: T;
+              isCorrect?: T;
+              id?: T;
+            };
+        id?: T;
+      };
   order?: T;
   updatedAt?: T;
   createdAt?: T;

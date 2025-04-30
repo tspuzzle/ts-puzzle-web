@@ -2,7 +2,7 @@
 
 .rich-text {
   @apply text-primary-text;
-  p {
+  & > p:not(:first-child) {
     @apply mt-2 text-primary-text text-body1;
   }
 
