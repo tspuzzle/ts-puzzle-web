@@ -6,9 +6,10 @@ import React from 'react'
 type Props = {
   code: string
   language?: string
+  withLineNumbers?: boolean | null
 }
 
-export const Code: React.FC<Props> = ({ code, language = '' }) => {
+export const Code: React.FC<Props> = ({ code, language = '', withLineNumbers }) => {
   const colorPallete = useThemeCodePallete()
 
   if (!code) return null
@@ -132,7 +133,9 @@ export const Code: React.FC<Props> = ({ code, language = '' }) => {
         <pre className="bg-grey-50 p-4 text-code rounded overflow-x-auto my-4">
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ className: 'table-row', line })}>
-              <span className="table-cell select-none text-left text-primary-text">{i + 1}</span>
+              {withLineNumbers && (
+                <span className="table-cell select-none text-left text-primary-text">{i + 1}</span>
+              )}
               <span className="table-cell pl-6">
                 {line.map((token, key) => (
                   <span key={key} {...getTokenProps({ token })} />
