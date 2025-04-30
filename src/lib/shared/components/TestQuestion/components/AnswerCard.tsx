@@ -4,7 +4,13 @@ import { Answer } from '../model'
 import { MdCheck } from 'react-icons/md'
 import { MdClose } from 'react-icons/md'
 
-const FeedbackLabel = ({ isCorrect, checked }: { isCorrect: boolean; checked: boolean }) => {
+const FeedbackLabel = ({
+  isCorrect,
+  checked,
+}: {
+  isCorrect: boolean
+  checked?: boolean | undefined | null
+}) => {
   const commonClasses = 'w-fit text-body2 py-0.5 px-1.5 inline-block rounded-sm'
   const errorLabelClasses = 'text-error-contrast bg-error'
   const rightLabelClasses = 'text-success-contrast bg-success'
