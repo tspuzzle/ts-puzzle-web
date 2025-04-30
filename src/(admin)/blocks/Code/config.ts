@@ -29,5 +29,11 @@ export const Code: Block = {
       label: false,
       required: true,
     },
+    {
+      name: 'withLineNumbers',
+      type: 'checkbox',
+      label: 'Show line numbers',
+      defaultValue: true,
+    },
   ],
 }

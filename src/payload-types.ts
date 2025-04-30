@@ -649,6 +649,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface CodeBlock {
   language?: ('typescript' | 'javascript' | 'css') | null;
   code: string;
+  withLineNumbers?: boolean | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'code';

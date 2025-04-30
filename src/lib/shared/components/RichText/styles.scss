@@ -6,6 +6,20 @@
     @apply mt-2 text-primary-text text-body1;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-h5 mt-2;
+  }
+
+  ul {
+    list-style: disc;
+    @apply mt-2 ml-4;
+  }
+
   code {
     @apply py-1 px-2 bg-grey-50 rounded-sm text-secondary-text;
   }
