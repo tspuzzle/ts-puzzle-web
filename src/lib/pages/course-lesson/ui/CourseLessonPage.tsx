@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { SlMenu } from 'react-icons/sl'
 import { getCourseLesson } from '../actions/getCourseLesson'
 import { ChapterNavigationItem } from '../components/ChapterNavigationItem'
+import { CourseLessonContent } from './CourseLessonContent'
 
 export const CourseLessonPage = async ({
   courseSlug,
@@ -38,20 +39,12 @@ export const CourseLessonPage = async ({
       <div className="pt-4 flex gap-12">
         <div className="grow-1 flex justify-center">
           <div className="w-full max-w-[720px]">
-            <div className="border-b border-grey-100 pb-4">
-              <div>
-                <span className="text-h6 text-primary">PART {currentChapterIndex + 1}</span>
-                <span className="text-h6 text-grey-600 pl-1">OF {chapters.length}</span>
-              </div>
-              <h2 className="text-h2 text-primary-text">{lesson.title}</h2>
-            </div>
-
-            <h1 className="text-h4 pt-8 text-primary-text">{currentChapter.title}</h1>
-            {currentChapter.content && (
-              <div className="pt-8">
-                <RichText data={currentChapter.content} />
-              </div>
-            )}
+            <CourseLessonContent
+              lesson={lesson}
+              currentChapter={currentChapter}
+              currentChapterIndex={currentChapterIndex}
+              chapters={chapters}
+            />
           </div>
         </div>
         <div className="w-[380px]">

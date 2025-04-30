@@ -294,7 +294,7 @@ export interface Chapter {
   } | null;
   questions?:
     | {
-        question?: {
+        question: {
           root: {
             type: string;
             children: {
@@ -308,11 +308,11 @@ export interface Chapter {
             version: number;
           };
           [k: string]: unknown;
-        } | null;
-        type?: ('single' | 'multiple') | null;
+        };
+        type: 'single' | 'multiple';
         answers?:
           | {
-              answer?: {
+              answer: {
                 root: {
                   type: string;
                   children: {
@@ -326,8 +326,8 @@ export interface Chapter {
                   version: number;
                 };
                 [k: string]: unknown;
-              } | null;
-              isCorrect?: boolean | null;
+              };
+              isCorrect: boolean;
               id?: string | null;
             }[]
           | null;

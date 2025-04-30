@@ -70,6 +70,7 @@ export const Chapters: CollectionConfig = {
           name: 'question',
           type: 'richText',
           label: 'Question',
+          required: true,
         },
         {
           name: 'type',
@@ -86,6 +87,7 @@ export const Chapters: CollectionConfig = {
             },
           ],
           defaultValue: 'single',
+          required: true,
         },
         {
           name: 'answers',
@@ -96,11 +98,14 @@ export const Chapters: CollectionConfig = {
               name: 'answer',
               type: 'richText',
               label: 'Answer',
+              required: true,
             },
             {
               name: 'isCorrect',
               type: 'checkbox',
               label: 'Is Correct?',
+              defaultValue: false,
+              required: true,
             },
           ],
         },
