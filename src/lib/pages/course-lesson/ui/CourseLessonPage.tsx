@@ -1,12 +1,14 @@
 import routes from '@/lib/app/routes'
-import RichText from '@/lib/shared/components/RichText'
 import { BrandBackgroundCard } from '@/lib/shared/ui'
 import { Course } from '@/payload-types'
 import Link from 'next/link'
 import { SlMenu } from 'react-icons/sl'
+import { IoArrowForwardCircleSharp } from 'react-icons/io5'
+
 import { getCourseLesson } from '../actions/getCourseLesson'
 import { ChapterNavigationItem } from '../components/ChapterNavigationItem'
 import { CourseLessonContent } from './CourseLessonContent'
+import { getNextCourseLesson } from '../actions/getNextCourseLesson'
 
 export const CourseLessonPage = async ({
   courseSlug,
@@ -22,6 +24,13 @@ export const CourseLessonPage = async ({
     lessonSlug,
     chapterSlug,
   })
+
+  const nextChapter = await getNextCourseLesson({
+    courseSlug,
+    lessonSlug,
+    chapterSlug,
+  })
+
   const course = lesson.course as Course
 
   if (!currentChapter) {
@@ -45,6 +54,20 @@ export const CourseLessonPage = async ({
               currentChapterIndex={currentChapterIndex}
               chapters={chapters}
             />
+            {nextChapter && (
+              <Link href={routes.courses.chapters.bySlug(nextChapter)}>
+                <div className="flex gap-6 justify-between p-4 rounded-lg bg-primary-light items-center cursor-pointer mb-6">
+                  <div className="flex flex-col gap-2">
+                    <span className="text-body2 text-primary-dark">Next</span>
+                    <span className="text-h4 text-primary">{nextChapter.lessonTitle}</span>
+                    <span className="text-h5 text-primary">
+                      Chapter: {nextChapter.chapterTitle}
+                    </span>
+                  </div>
+                  <IoArrowForwardCircleSharp className="w-6 h-6 text-primary" />
+                </div>
+              </Link>
+            )}
           </div>
         </div>
         <div className="w-[380px]">
