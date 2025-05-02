@@ -49,16 +49,22 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
         return null
       }
 
+      const title = node.fields.title
       const aspectRatio = width && height ? width / height : 16 / 9
       return (
-        <Image
-          alt={alt}
-          src={url}
-          sizes="100vw"
-          width={720}
-          height={720 / aspectRatio}
-          style={{ width: '100%', height: 'auto' }}
-        />
+        <div>
+          <Image
+            alt={alt}
+            src={url}
+            sizes="100vw"
+            width={720}
+            height={720 / aspectRatio}
+            style={{ width: '100%', height: 'auto' }}
+          />
+          {title && (
+            <div className="text-body1 text-center mt-1 text-sm text-gray-500">{title}</div>
+          )}
+        </div>
       )
     }
 
