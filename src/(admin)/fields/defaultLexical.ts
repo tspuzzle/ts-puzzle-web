@@ -54,7 +54,7 @@ export const defaultLexical: Config['editor'] = lexicalEditor({
       UploadFeature({
         collections: {
           media: {
-            fields: [{ name: 'alt`', type: 'text', label: 'Alt Text' }],
+            fields: [{ name: 'title', type: 'text', label: 'Title' }],
           },
         },
         maxDepth: 1,
