@@ -7,11 +7,13 @@ export const TestQuestion = ({
   mode,
   checkedAnswers,
   setCheckedAnswers,
+  notShowCorrectAnswer,
 }: {
   question: Question
   checkedAnswers: number[]
   mode: 'picking' | 'review'
   setCheckedAnswers: (checkedAnswers: number[]) => void
+  notShowCorrectAnswer?: boolean
 }) => {
   return (
     <div>
@@ -27,6 +29,7 @@ export const TestQuestion = ({
             onClick={() => {
               setCheckedAnswers([index])
             }}
+            notShowCorrectAnswer={notShowCorrectAnswer}
           />
         ))}
       </div>
