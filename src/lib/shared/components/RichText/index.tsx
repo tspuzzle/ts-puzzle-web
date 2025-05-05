@@ -14,6 +14,7 @@ import Image from 'next/image'
 import { CodeBlock, CodeBlockProps } from '@/(admin)/blocks/Code/Component'
 import { QuoteBlock, QuoteBlockProps } from '@/(admin)/blocks/Quote/Component'
 import { CodeEditorBlock, CodeEditorBlockProps } from '@/(admin)/blocks/CodeEditor/Component'
+import { TestBlock, TestBlockProps } from '@/(admin)/blocks/Test/Component'
 
 import { cn } from '@/lib/utils'
 
@@ -25,6 +26,7 @@ type NodeTypes =
   | SerializedBlockNode<CodeBlockProps>
   | SerializedBlockNode<CodeEditorBlockProps>
   | SerializedBlockNode<QuoteBlockProps>
+  | SerializedBlockNode<TestBlockProps>
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!
@@ -74,6 +76,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
     quote: ({ node }) => <QuoteBlock {...node.fields} />,
     codeEditor: ({ node }) => <CodeEditorBlock {...node.fields} />,
+    test: ({ node }) => <TestBlock {...node.fields} />,
   },
 })
 
