@@ -1,30 +1,5 @@
 import type { Block } from 'payload'
-import {
-  lexicalEditor,
-  BlocksFeature,
-  FixedToolbarFeature,
-  BoldFeature,
-  ItalicFeature,
-  UnderlineFeature,
-  InlineCodeFeature,
-  UnorderedListFeature,
-  OrderedListFeature,
-} from '@payloadcms/richtext-lexical'
-import { Code } from '../Code/config'
-
-const editor = lexicalEditor({
-  features: ({ rootFeatures }) => [
-    ...rootFeatures,
-    FixedToolbarFeature(),
-    BoldFeature(),
-    ItalicFeature(),
-    UnderlineFeature(),
-    InlineCodeFeature(),
-    UnorderedListFeature(),
-    OrderedListFeature(),
-    BlocksFeature({ blocks: [Code] }),
-  ],
-})
+import { limitedLexical } from '../limitedLexical'
 
 export const Test: Block = {
   slug: 'test',
@@ -34,7 +9,7 @@ export const Test: Block = {
       name: 'question',
       type: 'richText',
       label: 'Question',
-      editor,
+      editor: limitedLexical,
       required: true,
     },
     {
@@ -63,7 +38,7 @@ export const Test: Block = {
           name: 'answer',
           type: 'richText',
           label: 'Answer',
-          editor,
+          editor: limitedLexical,
           required: true,
         },
         {

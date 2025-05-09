@@ -14,7 +14,7 @@ import { Users } from './(admin)/collections/Users'
 import { Challenges, ChallengeLabels } from './(admin)/collections/challenges'
 import { Courses, Lessons, Chapters } from './(admin)/collections/courses'
 
-import { defaultLexical } from './(admin)/fields/defaultLexical'
+import { defaultLexical } from './(admin)/blocks/defaultLexical'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
