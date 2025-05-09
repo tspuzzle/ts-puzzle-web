@@ -2,6 +2,7 @@ import { Code } from '@/(admin)/blocks/Code/config'
 import { Quote } from '@/(admin)/blocks/Quote/config'
 import { CodeEditor } from '@/(admin)/blocks/CodeEditor/config'
 import { Test } from '@/(admin)/blocks/Test/config'
+import { ChallengeEditor } from '@/(admin)/blocks/ChallengeEditor/config'
 
 import {
   BlocksFeature,
@@ -44,7 +45,7 @@ export const defaultLexical: Config['editor'] = lexicalEditor({
       OrderedListFeature(),
       HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
       BlocksFeature({
-        blocks: [Code, CodeEditor, Quote, Test],
+        blocks: [Code, CodeEditor, ChallengeEditor, Quote, Test],
         inlineBlocks: [],
       }),
       LinkFeature(),

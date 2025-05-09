@@ -15,6 +15,10 @@ import { CodeBlock, CodeBlockProps } from '@/(admin)/blocks/Code/Component'
 import { QuoteBlock, QuoteBlockProps } from '@/(admin)/blocks/Quote/Component'
 import { CodeEditorBlock, CodeEditorBlockProps } from '@/(admin)/blocks/CodeEditor/Component'
 import { TestBlock, TestBlockProps } from '@/(admin)/blocks/Test/Component'
+import {
+  ChallengeEditorBlock,
+  ChallengeEditorBlockProps,
+} from '@/(admin)/blocks/ChallengeEditor/Component'
 
 import { cn } from '@/lib/utils'
 
@@ -27,6 +31,7 @@ type NodeTypes =
   | SerializedBlockNode<CodeEditorBlockProps>
   | SerializedBlockNode<QuoteBlockProps>
   | SerializedBlockNode<TestBlockProps>
+  | SerializedBlockNode<ChallengeEditorBlockProps>
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!
@@ -77,6 +82,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     quote: ({ node }) => <QuoteBlock {...node.fields} />,
     codeEditor: ({ node }) => <CodeEditorBlock {...node.fields} />,
     test: ({ node }) => <TestBlock {...node.fields} />,
+    challengeEditor: ({ node }) => <ChallengeEditorBlock {...node.fields} />,
   },
 })
 
