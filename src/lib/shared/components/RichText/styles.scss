@@ -24,3 +24,17 @@
     @apply py-1 px-2 bg-grey-50 rounded-sm text-secondary-text;
   }
 }
+
+.challenge-block {
+  &.rich-text {
+    .text-code {
+      margin: 0;
+      font-size: 12px;
+      padding: 5px;
+
+      .table-cell {
+        padding: 0;
+      }
+    }
+  }
+}
