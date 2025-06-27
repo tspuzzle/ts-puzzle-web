@@ -67,6 +67,7 @@ export interface Config {
   };
   blocks: {};
   collections: {
+    posts: Post;
     challenges: Challenge;
     challengeLabels: ChallengeLabel;
     courses: Course;
@@ -91,6 +92,7 @@ export interface Config {
     };
   };
   collectionsSelect: {
+    posts: PostsSelect<false> | PostsSelect<true>;
     challenges: ChallengesSelect<false> | ChallengesSelect<true>;
     challengeLabels: ChallengeLabelsSelect<false> | ChallengeLabelsSelect<true>;
     courses: CoursesSelect<false> | CoursesSelect<true>;
@@ -134,6 +136,34 @@ export interface UserAuthOperations {
     email: string;
     password: string;
   };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: number;
+  slug: string;
+  slugLock?: boolean | null;
+  title: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -399,6 +429,10 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
+        relationTo: 'posts';
+        value: number | Post;
+      } | null)
+    | ({
         relationTo: 'challenges';
         value: number | Challenge;
       } | null)
@@ -471,6 +505,19 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts_select".
+ */
+export interface PostsSelect<T extends boolean = true> {
+  slug?: T;
+  slugLock?: T;
+  title?: T;
+  content?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
