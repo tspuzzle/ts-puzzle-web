@@ -1,8 +1,9 @@
-import * as migration_20250331_185942_init_shcema from './20250331_185942_init_shcema'
-import * as migration_20250401_210314_add_challenge_collection from './20250401_210314_add_challenge_collection'
-import * as migration_20250422_100319_content_for_chapter from './20250422_100319_content_for_chapter'
-import * as migration_20250428_151402_add_test_content from './20250428_151402_add_test_content'
-import * as migration_20250430_092558_update_question_schema_required_fields from './20250430_092558_update_question_schema_required_fields'
+import * as migration_20250331_185942_init_shcema from './20250331_185942_init_shcema';
+import * as migration_20250401_210314_add_challenge_collection from './20250401_210314_add_challenge_collection';
+import * as migration_20250422_100319_content_for_chapter from './20250422_100319_content_for_chapter';
+import * as migration_20250428_151402_add_test_content from './20250428_151402_add_test_content';
+import * as migration_20250430_092558_update_question_schema_required_fields from './20250430_092558_update_question_schema_required_fields';
+import * as migration_20250627_142727 from './20250627_142727';
 
 export const migrations = [
   {
@@ -30,4 +31,9 @@ export const migrations = [
     down: migration_20250430_092558_update_question_schema_required_fields.down,
     name: '20250430_092558_update_question_schema_required_fields',
   },
-]
+  {
+    up: migration_20250627_142727.up,
+    down: migration_20250627_142727.down,
+    name: '20250627_142727'
+  },
+];

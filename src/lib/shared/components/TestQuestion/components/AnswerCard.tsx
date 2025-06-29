@@ -4,7 +4,15 @@ import { Answer } from '../model'
 import { MdCheck } from 'react-icons/md'
 import { MdClose } from 'react-icons/md'
 
-const FeedbackLabel = ({ isCorrect, checked }: { isCorrect: boolean; checked: boolean }) => {
+const FeedbackLabel = ({
+  isCorrect,
+  checked,
+  notShowCorrectAnswer,
+}: {
+  isCorrect: boolean
+  checked?: boolean | undefined | null
+  notShowCorrectAnswer?: boolean
+}) => {
   const commonClasses = 'w-fit text-body2 py-0.5 px-1.5 inline-block rounded-sm'
   const errorLabelClasses = 'text-error-contrast bg-error'
   const rightLabelClasses = 'text-success-contrast bg-success'
@@ -15,6 +23,9 @@ const FeedbackLabel = ({ isCorrect, checked }: { isCorrect: boolean; checked: bo
     ) : (
       <span className={[commonClasses, errorLabelClasses].join(' ')}>Your wrong answer</span>
     )
+  }
+  if (notShowCorrectAnswer) {
+    return null
   }
   if (isCorrect) {
     return <span className={[commonClasses, rightLabelClasses].join(' ')}>Correct answer</span>
@@ -28,14 +39,16 @@ export const AnswerCard = ({
   checked,
   mode,
   onClick,
+  notShowCorrectAnswer,
 }: {
   answer: Answer
   index: number
   checked?: boolean
   mode: 'picking' | 'review'
   onClick?: () => void
+  notShowCorrectAnswer?: boolean
 }) => {
-  const showFeedback = mode === 'review' && (checked || answer.isCorrect)
+  const showFeedback = mode === 'review' && (checked || (answer.isCorrect && !notShowCorrectAnswer))
 
   return (
     <div
@@ -59,7 +72,13 @@ export const AnswerCard = ({
       </div>
 
       <div className="flex-1 flex gap-1 flex-col">
-        {mode === 'review' && <FeedbackLabel isCorrect={answer.isCorrect} checked={checked} />}
+        {mode === 'review' && (
+          <FeedbackLabel
+            isCorrect={answer.isCorrect}
+            checked={checked}
+            notShowCorrectAnswer={notShowCorrectAnswer}
+          />
+        )}
         <RichText data={answer.answer} className="[&>*:first-child]:mt-0" />
       </div>
 

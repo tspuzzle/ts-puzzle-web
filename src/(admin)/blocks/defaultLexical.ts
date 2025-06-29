@@ -1,6 +1,8 @@
 import { Code } from '@/(admin)/blocks/Code/config'
 import { Quote } from '@/(admin)/blocks/Quote/config'
 import { CodeEditor } from '@/(admin)/blocks/CodeEditor/config'
+import { Test } from '@/(admin)/blocks/Test/config'
+import { ChallengeEditor } from '@/(admin)/blocks/ChallengeEditor/config'
 
 import {
   BlocksFeature,
@@ -43,7 +45,7 @@ export const defaultLexical: Config['editor'] = lexicalEditor({
       OrderedListFeature(),
       HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
       BlocksFeature({
-        blocks: [Code, CodeEditor, Quote],
+        blocks: [Code, CodeEditor, ChallengeEditor, Quote, Test],
         inlineBlocks: [],
       }),
       LinkFeature(),
@@ -54,7 +56,7 @@ export const defaultLexical: Config['editor'] = lexicalEditor({
       UploadFeature({
         collections: {
           media: {
-            fields: [{ name: 'alt`', type: 'text', label: 'Alt Text' }],
+            fields: [{ name: 'title', type: 'text', label: 'Title' }],
           },
         },
         maxDepth: 1,

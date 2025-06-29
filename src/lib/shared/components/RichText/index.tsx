@@ -14,6 +14,11 @@ import Image from 'next/image'
 import { CodeBlock, CodeBlockProps } from '@/(admin)/blocks/Code/Component'
 import { QuoteBlock, QuoteBlockProps } from '@/(admin)/blocks/Quote/Component'
 import { CodeEditorBlock, CodeEditorBlockProps } from '@/(admin)/blocks/CodeEditor/Component'
+import { TestBlock, TestBlockProps } from '@/(admin)/blocks/Test/Component'
+import {
+  ChallengeEditorBlock,
+  ChallengeEditorBlockProps,
+} from '@/(admin)/blocks/ChallengeEditor/Component'
 
 import { cn } from '@/lib/utils'
 
@@ -25,6 +30,8 @@ type NodeTypes =
   | SerializedBlockNode<CodeBlockProps>
   | SerializedBlockNode<CodeEditorBlockProps>
   | SerializedBlockNode<QuoteBlockProps>
+  | SerializedBlockNode<TestBlockProps>
+  | SerializedBlockNode<ChallengeEditorBlockProps>
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!
@@ -49,16 +56,22 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
         return null
       }
 
+      const title = node.fields.title
       const aspectRatio = width && height ? width / height : 16 / 9
       return (
-        <Image
-          alt={alt}
-          src={url}
-          sizes="100vw"
-          width={720}
-          height={720 / aspectRatio}
-          style={{ width: '100%', height: 'auto' }}
-        />
+        <div>
+          <Image
+            alt={alt}
+            src={url}
+            sizes="100vw"
+            width={720}
+            height={720 / aspectRatio}
+            style={{ width: '100%', height: 'auto' }}
+          />
+          {title && (
+            <div className="text-body1 text-center mt-1 text-sm text-gray-500">{title}</div>
+          )}
+        </div>
       )
     }
 
@@ -68,6 +81,8 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
     quote: ({ node }) => <QuoteBlock {...node.fields} />,
     codeEditor: ({ node }) => <CodeEditorBlock {...node.fields} />,
+    test: ({ node }) => <TestBlock {...node.fields} />,
+    challengeEditor: ({ node }) => <ChallengeEditorBlock {...node.fields} />,
   },
 })
 

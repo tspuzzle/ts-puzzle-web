@@ -11,10 +11,12 @@ import { Accounts } from './(admin)/collections/Account'
 import { Media } from './(admin)/collections/Media'
 import { Users } from './(admin)/collections/Users'
 
+import { Posts } from './(admin)/collections/blog/Posts'
+
 import { Challenges, ChallengeLabels } from './(admin)/collections/challenges'
 import { Courses, Lessons, Chapters } from './(admin)/collections/courses'
 
-import { defaultLexical } from './(admin)/fields/defaultLexical'
+import { defaultLexical } from './(admin)/blocks/defaultLexical'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -34,7 +36,17 @@ const payloadConfig = buildConfig({
       },
     },
   },
-  collections: [Challenges, ChallengeLabels, Courses, Lessons, Chapters, Users, Accounts, Media],
+  collections: [
+    Posts,
+    Challenges,
+    ChallengeLabels,
+    Courses,
+    Lessons,
+    Chapters,
+    Users,
+    Accounts,
+    Media,
+  ],
   editor: defaultLexical,
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
