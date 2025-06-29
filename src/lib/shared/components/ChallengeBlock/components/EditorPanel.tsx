@@ -15,7 +15,7 @@ export const EditorPanel = ({
 }) => {
   return (
     <div className="h-full flex flex-col">
-      <div className="p-2 border-b bg-white">
+      <div className="p-2 border-b border-primary bg-white">
         <span className="font-medium text-sm">Code Editor</span>
       </div>
 
@@ -24,7 +24,7 @@ export const EditorPanel = ({
       </div>
 
       <div className="p-2 border-t bg-gray-50 flex justify-end">
-        <Button size="sm" onClick={onSubmit} disabled={isLoading}>
+        <Button onClick={onSubmit} disabled={isLoading}>
           {isLoading ? (
             <>
               <Clock className="w-4 h-4 mr-1 animate-spin" />
