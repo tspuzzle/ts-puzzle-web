@@ -8,9 +8,8 @@ export const PostPage = async ({ slug }: { slug: string }) => {
 
   try {
     return (
-      <div>
-        {post.title}
-
+      <div className="container mx-auto px-4 py-8 max-w-[800px]">
+        <h1 className="text-h4 text-primary-main">{post.title}</h1>
         <RichText data={post.content} />
       </div>
     )

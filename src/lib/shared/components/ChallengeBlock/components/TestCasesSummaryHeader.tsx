@@ -13,7 +13,7 @@ export const TestCaseSummaryHeader = ({
 }) => {
   const { passed, total, checking, failed } = summary
   return (
-    <div className="p-2 border-b bg-white">
+    <div className="p-2 border-b border-primary bg-white">
       <div className="flex items-center justify-between gap-2">
         {!isCompact && <span className="font-medium text-sm">Test Cases</span>}
         <div className={cn('transition-all duration-300 text-center flex-1')}>

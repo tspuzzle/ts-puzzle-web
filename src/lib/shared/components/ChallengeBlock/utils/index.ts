@@ -40,7 +40,7 @@ export const getCardStyles = (status: TestCaseState['status']) => {
       return {
         borderColor: 'border-l-gray-400',
         bgColor: 'bg-gray-50',
-        statusText: 'PENDING',
+        statusText: 'NOT RUN',
         statusBg: 'bg-gray-400',
       }
   }

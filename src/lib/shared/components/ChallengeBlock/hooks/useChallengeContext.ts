@@ -14,6 +14,9 @@ export const useChallengeContext = ({ testCases }: { testCases: TestCase[] }) =>
   const runTests = async () => {
     setIsRunningTests(true)
 
+    setTestCasesStates((states) => states.map((state) => ({ ...state, status: 'checking' })))
+    console.log('Running tests...')
+
     await Promise.all(
       testCases.map((testCase, i) =>
         compileTypescriptCode(`${code};${testCase.test}`).then((result) => {

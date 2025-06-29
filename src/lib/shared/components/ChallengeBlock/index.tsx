@@ -17,17 +17,14 @@ export interface ChallengeBlockProps {
   challengeBlock: ChallengeEditorBlock
 }
 
-export default function ChallengeBlock({
-  challengeBlock,
-  title = 'Sum Function Challenge',
-}: ChallengeBlockProps) {
+export default function ChallengeBlock({ challengeBlock }: ChallengeBlockProps) {
   const [isCompact, setIsCompact] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
 
   const toggleCompact = () => setIsCompact(!isCompact)
   const toggleFullscreen = () => setIsFullscreen(!isFullscreen)
 
-  const containerClasses = isFullscreen ? 'fixed inset-0 z-50 bg-white' : 'w-full'
+  const containerClasses = isFullscreen ? 'fixed inset-0 z-50 bg-white border-none' : 'w-full'
 
   const testCases = challengeBlock.testCases || []
   const { isRunningTests, testSummary, code, setCode, runTests, testCasesStates } =
@@ -35,16 +32,17 @@ export default function ChallengeBlock({
       testCases,
     })
 
+  console.log('==>', isRunningTests)
+
   return (
     <div
       className={cn(
-        'border rounded-lg shadow-lg flex flex-col overflow-hidden transition-all duration-300',
+        'border border-primary rounded-lg shadow-lg flex flex-col overflow-hidden transition-all duration-300',
         containerClasses,
       )}
     >
       <ChallengeBlockHeader
         isFullscreen={isFullscreen}
-        title={title}
         description={challengeBlock.description}
         toggleFullscreen={toggleFullscreen}
       />
@@ -52,7 +50,7 @@ export default function ChallengeBlock({
       <div className={cn('flex-1 flex min-h-0', !isFullscreen && 'max-h-[400px]')}>
         <div
           className={cn(
-            'border-r bg-gray-50 transition-all duration-300 ease-in-out',
+            'border-r border-primary bg-gray-50 transition-all duration-300 ease-in-out',
             isCompact ? 'w-[12%]' : 'w-[40%]',
           )}
         >
