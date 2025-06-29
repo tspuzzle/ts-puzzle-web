@@ -1,5 +1,5 @@
 import { Check, Clock, Play, X } from 'lucide-react'
-import { TestCase, TestCaseState } from '../types'
+import { TestCaseState } from '../types'
 
 export const TestCaseStatusIcon = ({ status }: { status: TestCaseState['status'] }) => {
   switch (status) {
